@@ -1,0 +1,80 @@
+<!--form for adding new commodities-->
+
+<div layout:decorate="~{/layouts/layout}" layout:fragment="content">
+    <h2>Управление товарами</h2><br />
+
+    <div class="alert alert-success" th:if="${flashMessage != null}" th:text="${flashMessage}"></div>
+
+    <div class="tab-container tab-colored-arrow-down tab-top tab-primary">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#commodityList__colored_arrow_down"
+                   aria-controls="commodityList"
+                   data-toggle="tab"
+                   aria-expanded="true">
+                    <i class="fa fa-list fa-fw m-xs-r" aria-hidden="true"></i>
+                    Список товаров
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/commodity/create}"
+                   aria-controls="newCommodity"
+                   aria-expanded="false">
+                    <i class="fa fa-file fa-fw m-xs-r" aria-hidden="true"></i>
+                    Добавить новый товар
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="commodityList__colored_arrow_down">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Пол</th>
+                        <th>Возрастное ограничение</th>
+                        <th>Количество</th>
+                        <th>Категория</th>
+                        <th>Страна производитель</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <!--
+                        Если список пуст, то выводим сообщение о том, что
+                        товаров в системе нет
+                    -->
+                    <tbody th:if="${commodities.isEmpty()}">
+                        <tr>
+                            <td colspan="9" class="text-center">Список товаров пуст</td>
+                        </tr>
+                    </tbody>
+
+                    <!-- Если товары есть, то выводим их в таблицу -->
+                    <tbody th:if="${!commodities.isEmpty()}">
+                        <tr data-th-each="commodity : ${commodities}">
+                            <td data-th-text="${commodity.name}" width="12px">...</td>
+                            <td data-th-text="${commodity.price}" width="12px">...</td>
+                            <td data-th-text="${commodity.gender != null} ? ${commodity.gender.name} : 'Пол не указан'" width="12px">...</td>
+                            <td data-th-text="${commodity.age + '+'}" width="12px">...</td>
+                            <td data-th-text="${commodity.quantity}" width="12px">...</td>
+                            <td data-th-text="${commodity.categories != null} ? ${commodity.categories.name} : 'Категория не указана'" width="12px"></td>
+                            <td data-th-text="${commodity.country != null} ? ${commodity.country.name} : 'Страна поставщик не указана'"></td>
+                            <td>
+                                <div th:replace="/commodity/fragments/status :: status (commodity=${commodity})"></div>
+                            </td>
+                            <td>
+                                <a href="#" th:href="@{/commodity/{id}(id=${commodity.id})}">
+                                    <i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+                                    Просмотреть
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

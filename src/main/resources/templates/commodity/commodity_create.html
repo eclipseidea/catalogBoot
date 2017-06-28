@@ -1,0 +1,9 @@
+<!-- Add commodity page -->
+<div layout:decorate="~{/layouts/layout}" layout:fragment="content">
+    <div class="page-title">
+        <h3>Добавить новый товар</h3>
+        <small>На этой странице вы можете добавить новый товар в магазин</small>
+    </div><br><br>
+
+    <div th:replace="/commodity/fragments/_commodity_form :: form (commodity=${commodity}, buttonName='Создать', action=@{/commodity/create})"></div>
+</div>

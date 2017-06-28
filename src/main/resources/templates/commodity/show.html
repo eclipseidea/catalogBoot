@@ -1,0 +1,87 @@
+<!-- View concrete commodity -->
+<div layout:decorate="~{/layouts/layout}" layout:fragment="content">
+    <div class="page-title">
+        <h3 th:text="|Название: ${commodity.name}|"></h3>
+        <p>
+            <a href="#" th:href="@{/commodity}">Назад к списку товаров</a>
+        </p>
+    </div><br>
+
+    <div th:if="${flashMessage != null}" th:text="${flashMessage}" class="alert alert-success"></div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Основная информация</h4>
+                </div>
+                <div class="panel-body common-information">
+                    <div class="row">
+                        <div class="col-md-4"><b>Название</b></div>
+                        <div class="col-md-8" th:text="${commodity.name}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Рекомендуемый пол</b></div>
+                        <div class="col-md-8" th:text="${commodity.gender.name}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Рекомендуемый возраст</b></div>
+                        <div class="col-md-8" th:text="|${commodity.age}+|"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Цена</b></div>
+                        <div class="col-md-8" th:text="${commodity.price}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Количество (доступных)</b></div>
+                        <div class="col-md-8" th:text="|${commodity.quantity} позиций|"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Описание</b></div>
+                        <div class="col-md-8" th:text="${commodity.description}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Категория</b></div>
+                        <div class="col-md-8" th:text="${commodity.categories?.name}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Поставщик</b></div>
+                        <div class="col-md-8" th:text="${commodity.country?.name}"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4"><b>Статус</b></div>
+                        <div class="col-md-8">
+                            <div th:replace="/commodity/fragments/status :: status (commodity=${commodity})"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <a href="#" th:href="@{/commodity/{id}/update(id=${commodity.id})}">
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                        Редактировать
+                    </a>
+                </li>
+                <li th:if="!${commodity.deleted}">
+                    <a href="#" th:href="@{/commodity/{id}/delete(id=${commodity.id})}">
+                        <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+                        Снять с продажи
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- // end view commodity -->

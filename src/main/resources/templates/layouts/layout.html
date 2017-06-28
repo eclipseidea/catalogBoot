@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <!-- Begin Vendor CSS -->
+    <link rel="stylesheet" th:href="@{/scripts/plugins/bootstrap/dist/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet"
+          th:href="@{/scripts/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css}"/>
+    <link rel="stylesheet" th:href="@{/scripts/plugins/nvd3/build/nv.d3.min.css}"/>
+    <!-- End Vendor CSS -->
+
+    <!-- Begin XPLOIT CSS -->
+    <link rel="stylesheet" th:href="@{/css/xploit.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <!-- End XPLOIT CSS -->
+
+    <style>
+        .nv-x .tick {
+            opacity: 0 !important;
+        }
+
+        .nv-y path {
+            display: none;
+        }
+
+        .nv-y text {
+            fill: #aaa;
+            font-weight: normal !important;
+        }
+
+        .highcharts-tooltip > path {
+            fill: #000 !important;
+            stroke: transparent;
+        }
+
+        .highcharts-tooltip > text {
+            fill: #fff !important;
+        }
+
+        .highcharts-tooltip > text > tspan:first-child {
+            text-transform: uppercase;
+            font-size: 14px !important;
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <!-- Begin Page Sidebar -->
+    <nav id="page-sidebar">
+        <!--
+            #page-siderbar contains the base navigation items and contains
+                .sidebar-header,
+                .sidebar-avatar,
+                .sidebar-navigation and
+                .sidebar-stats
+
+            Sidebar is categorized in the four sections as mentioned above
+            and contains their respective HTML codes
+
+            The main navigation items are under .sidebar-navigation unordered list
+        -->
+
+
+        <!-- Begin Scrollbar Padder -->
+        <div class="scrollbar-padder">
+            <!-- Begin Sidebar Container -->
+            <div class="sidebar-container">
+                <!-- Begin Sidebar Header -->
+                <div class="sidebar-header">
+                    <a th:href="@{/}" class="text-uppercase fs-lg"><strong
+                            class="header-short-name text-success ls-xs fw-thkr">X</strong><span class="ls-xs fw-thk">ploit</span></a>
+                </div>
+                <!-- End Sidebar Header -->
+
+                <!-- Begin Sidebar Avatar -->
+                <div class="sidebar-avatar">
+                    <div class="media">
+                        <div class="media-left">
+                            <img th:src="@{/images/avatar/avatar1.png}" alt="Avatar" class="img-circle"
+                                 height="64" width="64">
+                        </div>
+                        <div class="media-body">
+                            <a href="javascript:void(0)" class="text-white" data-toggle-class="hide-sidebar-avatar-info"
+                               data-target=".sidebar-avatar-info">
+                                <h5 class="media-heading m-md-t text-white fw-thk">Johnny Garrett</h5>
+                            </a>
+                            <p class="text-white fs-sm">UI/UX Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Sidebar Avatar -->
+
+                <!-- Begin Sidebar Navigation -->
+                <ul class="sidebar-navigation ul-clear">
+
+                    <!--
+                      Contains all the list items for the navigation.
+                      <li> with the class menu-header is the category header for the list.
+                      Respective <li> or the current <li> is added with the "open" manually for all the page.
+                      And all the <li> childrens(<ul) are given with the class "nav-submenu"
+                    -->
+
+                    <!-- Begin Dashboard -->
+                    <li class="open">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-home fa-fw"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    <!-- End Dashboard -->
+
+                    <li>
+                        <a th:href="@{/user}">
+                            <i class="fa fa-user fa-fw"></i><span>Users manager</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/commodity}">
+                            <i class="fa fa-product-hunt fa-fw"></i><span>Commodity manager</span>
+                        </a>
+                    </li>
+
+                    <li class="divider"></li>
+
+                </ul>
+
+                <!-- Begin Sidebar Footer -->
+                <div class="sidebar-footer">
+
+                </div>
+                <!-- End Sidebar Footer -->
+            </div>
+            <!-- End Sidebar Container -->
+        </div>
+        <!-- Begin Scrollbar Padder -->
+    </nav>
+    <!-- End Page Sidebar -->
+
+    <!-- Begin Page Header -->
+    <header id="page-header">
+
+        <!--
+            Header contains contains all the header menus and the profile option.
+            It uses bootstrap navbar classes for all the <ul>
+        -->
+
+        <div class="header-container hidden-md hidden-lg">
+            <a href="index.html" class="text-uppercase text-black fs-lg"><strong
+                    class="header-short-name text-success ls-xs fw-thkr">X</strong><span
+                    class="ls-xs fw-thk">ploit</span></a>
+        </div>
+
+        <!-- Begin Navbar Content -->
+        <div class="navbar-content">
+            <ul class="nav navbar-nav">
+                <li class="hidden-md hidden-lg p-md-l"><a href="javascript:void(0)" class="text-default"
+                                                          data-toggle-class="navbar-visible" data-target="body"><i
+                        class="fa fa-bars fa-fw"></i></a></li>
+                <li class="hidden-sm hidden-xs"><a href="javascript:void(0)" class="text-default"
+                                                   data-toggle-class="navbar-collapsed" data-target="body"><i
+                        class="fa fa-bars fa-fw"></i></a></li>
+
+                <!-- Begin Notifications -->
+                <li class="hidden-xs hidden-sm dropdown" id="header-notifications-list">
+                    <a href="javascript:void(0)" class="text-default dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bullhorn fa-fw"></i></a>
+                    <ul class="dropdown-menu p-md">
+                        <!-- Begin LI -->
+                        <li>
+                            <p class="fw-thk text-center text-uppercase ls-xs text-black">Notifications</p>
+                        </li>
+                        <!-- End LI -->
+
+                        <li class="divider"></li>
+
+                        <!-- Begin LI -->
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img th:src="@{/images/avatar/avatar2.png}" alt="Avatar" height="50"
+                                             width="50" class="img-circle">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading m-sm-t">Beverly Butler</h5>
+                                        <p class="fs-xs">You've recived a new message.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- End LI -->
+
+                        <!-- Begin LI -->
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img th:src="@{/images/avatar/avatar4.png}" alt="Avatar" height="50"
+                                             width="50" class="img-circle">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading m-sm-t">Ashley Guerrero</h5>
+                                        <p class="fs-xs"><i class="fa fa-phone text-danger m-xs-r fa-fw"></i>Missed
+                                            call.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- End LI -->
+
+                        <!-- Begin LI -->
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="h-50 w-50 lh-50 text-center bg-success br-50">
+                                            <i class="fa fa-download text-white fa-2x lh-50"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="m-xs-b">Download complete successfully</h5>
+                                        <p class="fs-xs text-grey">5 mins ago</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- End LI -->
+
+                        <!-- Begin LI -->
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img th:src="@{/images/avatar/avatar6.png}" alt="Avatar" height="50"
+                                             width="50" class="img-circle">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading m-sm-t">Jerry Morrison</h5>
+                                        <p class="fs-xs">Invited you to join the community</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- End LI -->
+
+                        <!-- Begin LI -->
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="h-50 w-50 lh-50 text-center bg-primary br-50">
+                                            <i class="fa fa-shopping-cart text-white fa-2x lh-50"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="m-xs-b">A new order has been placed</h5>
+                                        <p class="fs-xs text-grey">2 mins ago</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- End LI -->
+                    </ul>
+                </li>
+                <!-- End Notifications -->
+
+                <!-- Begin Messages -->
+                <li class="hidden-sm hidden-xs"><a href="javascript:void(0)" class="text-default"><i
+                        class="fa fa-inbox fa-fw"></i></a></li>
+                <!-- End Messages -->
+            </ul>
+            <ul class="nav navbar-nav pull-right hidden-sm hidden-xs">
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="text-default" data-toggle="dropdown">
+                        <span class="m-sm-r">Louis Bennett</span><i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="profile-dropdown dropdown-menu dropdown-menu-right" role="menu">
+                        <li role="presentation">
+                            <!-- Begin Profile Menu Container -->
+                            <div class="profile-menu-container">
+                                <div class="media">
+                                    <div class="profile-image pull-left">
+                                        <img th:src="@{/images/avatar/avatar1.png}" alt="Avatar" height="64"
+                                             width="64" class="img-circle">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="fw-thk m-n">Louis Bennett</h4>
+                                        <p class="fs-sm m-xs-t">Director at <strong><a href="javascript:void(0)"
+                                                                                       class="text-info">Absolut
+                                            Pixels</a></strong></p>
+                                        <button class="btn btn-success w-100 text-uppercase fs-sm">Connect <i
+                                                class="fa fa-caret-down"></i></button>
+                                    </div>
+                                </div>
+                                <div class="profile-options">
+                                    <div class="text-center">
+                                        <a href="javascript:void(0)"><i class="fa fa-user fa-fw"></i></a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="javascript:void(0)"><i class="fa fa-cog fa-fw"></i></a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="javascript:void(0)"><i class="fa fa-power-off"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Profile Menu Container -->
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- End Navbar Content -->
+    </header>
+    <!-- End Page Header -->
+
+    <!-- Begin Page Content -->
+    <main id="page-content" layout:fragment="content">
+
+    </main>
+</div>
+
+<!-- Begin Vendor JS -->
+<script th:src="@{/scripts/plugins/jquery/jquery.js}"></script>
+<script th:src="@{/scripts/plugins/bootstrap/dist/js/bootstrap.js}"></script>
+<script th:src="@{/scripts/plugins/kapusta-jquery.sparkline/dist/jquery.sparkline.min.js}"></script>
+<script th:src="@{/scripts/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js}"></script>
+<script th:src="@{/scripts/plugins/d3/d3.min.js}"></script>
+<script th:src="@{/scripts/plugins/nvd3/build/nv.d3.min.js}"></script>
+<script th:src="@{/scripts/plugins/raphael/raphael.min.js}"></script>
+<script th:src="@{/scripts/plugins/jquery-mapael/js/jquery.mapael.min.js}"></script>
+<script th:src="@{/scripts/plugins/jquery-mapael/js/maps/usa_states.min.js}"></script>
+<script th:src="@{/scripts/plugins/highcharts/highcharts.js}"></script>
+<script th:src="@{/scripts/plugins/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js}"></script>
+<script th:src="@{/scripts/plugins/rickshaw/rickshaw.min.js}"></script>
+<!-- End Vendor JS -->
+
+
+<!-- Begin XPLOIT JS -->
+<script th:src="@{/scripts/xploit.js}"></script>
+<!-- End XPLOIT JS -->
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div layout:decorate="~{/layouts/layout}" layout:fragment="content">
+    <div class="page-title">
+        <h3>Редактирование товара</h3>
+        <p>
+            <a href="#" th:href="@{/commodity/{id}(id=${commodity.id})}">Вернуться к товару</a>
+        </p>
+    </div><br><br>
+
+    <div th:replace="/commodity/fragments/_commodity_form :: form (commodity=${commodity}, buttonName='Обновить', action=@{/commodity/update})"></div>
+</div>

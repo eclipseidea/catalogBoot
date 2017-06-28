@@ -1,0 +1,4 @@
+<div th:fragment="status(commodity)">
+    <span th:text="${commodity.deleted} ? 'Снят с продажи' : 'Продается'"
+          th:class="${commodity.deleted} ? 'label label-danger' : 'label label-success'"></span>
+</div>

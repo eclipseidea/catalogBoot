@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ресурс не был найден</title>
+
+    <!-- Begin Vendor CSS -->
+    <link rel="stylesheet" th:href="@{/scripts/plugins/bootstrap/dist/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/scripts/plugins/components-font-awesome/css/font-awesome.css}" />
+    <!-- End Vendor CSS -->
+
+    <!-- Begin XPLOIT CSS -->
+    <link rel="stylesheet" th:href="@{/css/xploit.css}" />
+    <!-- End XPLOIT CSS -->
+</head>
+<body>
+
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Begin Content Wrapper -->
+<div class="content-wrapper">
+    <!-- Begin Error 404 -->
+    <div class="error-container">
+        <!-- Begin Error Message -->
+        <div class="error-message text-center">
+            <h1 class="fs-96">404</h1>
+            <p>Извините, но запрашиваемый ресурс не был найден</p>
+            <a href="#" th:href="@{/}">
+                <i class="fa fa-home fa-fw"></i>
+                Вернуться на главную страницу
+            </a>
+
+            <!-- Begin Page Footer -->
+            <p class="m-xl-t p-xl-t text-center"><strong class="text-success ls-xs">X</strong><span class="ls-xs">ploit</span> <span class="app-version">1.0.0</span>  © - 2017</p>
+            <!-- End Page Footer -->
+        </div>
+        <!-- End Error Message -->
+    </div>
+    <!-- End Error 404 -->
+</div>
+<!-- End Content Wrapper -->
+
+<!-- Begin Vendor JS -->
+<script th:src="@{/scripts/plugins/jquery/jquery.js}"></script>
+<script th:src="@{/scripts/plugins/bootstrap/dist/js/bootstrap.js}"></script>
+<!-- End Vendor JS -->
+</body>
+</html>
