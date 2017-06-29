@@ -1,4 +1,4 @@
-<div th:fragment="form (commodity, buttonName, action)">
+<div th:fragment="form (commodity, buttonName, action)" xmlns:th="http://www.w3.org/1999/xhtml">
     <form action="#" th:action="${action}" method="post" th:object="${commodity}" class="form-horizontal">
         <input type="hidden" th:field="*{id}" th:value="${commodity.id}" name="id" id="id"/>
 
@@ -115,6 +115,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="properties" class="col-sm-3 control-label">Характеристика и значение</label>
+                <div class="col-sm-9">
+                    <select name="properties" id="properties" th:field="*{properties}" class="form-control">
+
+                        <option th:each="properties : ${properties}"
+                                th:value="${properties}"
+                                th:text="${properties.name}"></option>
+                    </select>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('properties')}">
+                        <p th:errors="*{properties}"></p>
+                    </div>
+                </div>
+            </div>
+
 
             <hr />
 

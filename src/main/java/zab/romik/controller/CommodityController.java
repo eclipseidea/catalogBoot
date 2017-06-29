@@ -10,11 +10,13 @@ import zab.romik.Routes;
 import zab.romik.entity.Categories;
 import zab.romik.entity.Commodity;
 import zab.romik.entity.Country;
+import zab.romik.entity.Properties;
 import zab.romik.enums.CommodityGender;
 import zab.romik.exceptions.ResourceNotFoundException;
 import zab.romik.service.CategoriesService;
 import zab.romik.service.CommodityService;
 import zab.romik.service.CountryService;
+import zab.romik.service.PropertiesService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -59,6 +61,11 @@ public class CommodityController {
     private final CountryService countryService;
 
     /**
+     * Cервис для работы с PROPERTIES
+     */
+    private final PropertiesService propertiesService;
+
+    /**
      * Конструктор для внедрения зависимостей
      *
      * @param commodityService  Сервис для работы с товарами
@@ -68,10 +75,12 @@ public class CommodityController {
     @Autowired
     public CommodityController(final CommodityService commodityService,
                                final CategoriesService categoriesService,
-                               final CountryService countryService) {
+                               final CountryService countryService,
+                               final PropertiesService propertiesService) {
         this.commodityService = commodityService;
         this.categoriesService = categoriesService;
         this.countryService = countryService;
+        this.propertiesService = propertiesService;
     }
 
     /**
@@ -104,6 +113,14 @@ public class CommodityController {
     public List<Country> countries() {
         return countryService.findAll();
     }
+
+    /**
+     * Возвращает список проперти из базы данных
+     *
+     * @return Список properties
+     */
+    @ModelAttribute("properties")
+    public List<Properties> properties(){return propertiesService.findAll();}
 
     /**
      * Страница со списком товаров.
@@ -240,4 +257,6 @@ public class CommodityController {
         }
         return commodity;
     }
+
+
 }
