@@ -26,7 +26,7 @@ import static java.util.Objects.requireNonNull;
 public class Api {
 
     /**
-     * Сервис для работы со свойствамиf
+     * Сервис для работы со свойствами
      */
     private final PropertiesService propertiesService;
 
