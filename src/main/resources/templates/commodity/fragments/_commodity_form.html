@@ -119,11 +119,11 @@
             <div class="form-group">
                 <label for="properties" class="col-sm-3 control-label">Характеристика и значение</label>
                 <div class="col-sm-9">
-                    <select name="properties" id="properties" th:field="*{properties}" class="form-control">
+                    <select name="properties" id="properties"  class="form-control">
                         <option value="">Выберите характеристику и значение</option>
                         <option th:each="property : ${properties}"
-                                th:value="${{property}}"
-                                th:text="${property.name}"></option>
+                                th:value="${{property.id}}"
+                                th:text="${property.title}"></option>
                     </select>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('properties')}">
                         <p th:errors="*{properties}"></p>
