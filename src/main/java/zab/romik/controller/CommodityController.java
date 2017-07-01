@@ -255,7 +255,7 @@ public class CommodityController {
         if (commodity == null) {
             throw new ResourceNotFoundException();
         }
-        return commodity;   
+        return commodity;
     }
 
 
