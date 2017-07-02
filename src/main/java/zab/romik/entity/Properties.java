@@ -1,14 +1,9 @@
 package zab.romik.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @ToString
@@ -18,15 +13,15 @@ public class Properties {
 
     @Getter
     @Setter
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
 
-    @Getter
-    @Setter
-    @JsonIgnore
-    @OneToMany(mappedBy = "properties", cascade = CascadeType.REMOVE)
-    private List<Value> value;
+        @Getter
+        @Setter
+        @JsonIgnore
+        @OneToMany(mappedBy = "properties", cascade = CascadeType.REMOVE)
+        private List<Value> value;
 
     @Getter
     @Setter

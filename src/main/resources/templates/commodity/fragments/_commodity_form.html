@@ -73,7 +73,7 @@
                     <select name="categories" id="categories" th:field="*{categories}" class="form-control">
                         <option value="">Выберите категорию</option>
                         <option th:each="cat : ${categories}"
-                                th:value="${{cat.id}}"
+                                th:value="${cat.id}"
                                 th:text="${cat.name}"></option>
                     </select>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('categories')}">
@@ -107,7 +107,7 @@
                     <select name="countries" id="countries" th:field="*{country}" class="form-control">
                         <option value="">Выберите страну</option>
                         <option th:each="cant : ${countries}"
-                                th:value="${{cant.id}}"
+                                th:value="${cant.id}"
                                 th:text="${cant.name}"></option>
                     </select>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('country')}">
@@ -122,12 +122,9 @@
                     <select name="properties" id="properties"  class="form-control">
                         <option value="">Выберите характеристику и значение</option>
                         <option th:each="property : ${properties}"
-                                th:value="${{property.id}}"
+                                th:value="${property.id}"
                                 th:text="${property.title}"></option>
                     </select>
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('properties')}">
-                        <p th:errors="*{properties}"></p>
-                    </div>
                 </div>
             </div>
 
