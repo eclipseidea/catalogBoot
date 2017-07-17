@@ -1,5 +1,7 @@
 package zab.romik.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +21,7 @@ public class Value {
     @Getter
     @Setter
     @ManyToOne
+    @JsonIgnore
     private Properties properties;
     @Getter
     @Setter

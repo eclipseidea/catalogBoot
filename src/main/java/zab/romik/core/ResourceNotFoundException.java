@@ -1,4 +1,4 @@
-package zab.romik.exceptions;
+package zab.romik.core;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

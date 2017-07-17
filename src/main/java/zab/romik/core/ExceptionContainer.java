@@ -1,4 +1,4 @@
-package zab.romik.system;
+package zab.romik.core;
 
 import lombok.*;
 

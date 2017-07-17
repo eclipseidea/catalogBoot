@@ -1,8 +1,8 @@
 <div th:fragment="form (commodity, buttonName, action)" xmlns:th="http://www.w3.org/1999/xhtml">
-    <form action="#" th:action="${action}" method="post" th:object="${commodity}" class="form-horizontal">
+    <form action="#" th:action="${action}" method="post" th:object="${commodity}" class="form-horizontal" id="commodityForm">
         <input type="hidden" th:field="*{id}" th:value="${commodity.id}" name="id" id="id"/>
 
-        <div class="row">
+        <div class="row" >
             <div class="form-group">
                 <label for="commodityName" class="col-sm-3 control-label">Название *</label>
                 <div class="col-sm-9">
@@ -119,12 +119,21 @@
             <div class="form-group">
                 <label for="properties" class="col-sm-3 control-label">Характеристика и значение</label>
                 <div class="col-sm-9">
-                    <select name="properties" id="properties" class="form-control">
-                        <option value="">Выберите характеристику и значение</option>
-                        <option th:each="property : ${properties}"
-                                th:value="${property.id}"
-                                th:text="${property.title}"></option>
-                    </select>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <select name="properties" id="properties" class="form-control">
+                                <option value="">Выберите характеристику и значение</option>
+                                <option th:each="property : ${properties}"
+                                        th:value="${property.id}"
+                                        th:text="${property.title}"></option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select name="property-values" id="property__values" class="form-control" disabled>
+                                <option value="">Выберите свойство</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
 

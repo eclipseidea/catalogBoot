@@ -5,5 +5,5 @@
         <small>На этой странице вы можете добавить новый товар в магазин</small>
     </div><br><br>
 
-    <div th:replace="/commodity/fragments/_commodity_form :: form (commodity=${commodity}, buttonName='Создать', action=@{/commodity/create})"></div>
+    <div th:replace="/commodity/fragments/_commodity_form :: form (commodity=${commodity}, buttonName='Создать', action='/commodity/create')"></div>
 </div>

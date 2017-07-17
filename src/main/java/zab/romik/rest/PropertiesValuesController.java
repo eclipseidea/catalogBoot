@@ -1,14 +1,12 @@
-package zab.romik.controller;
+package zab.romik.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import zab.romik.Routes;
 import zab.romik.entity.Properties;
 import zab.romik.entity.Value;
-import zab.romik.exceptions.ResourceNotFoundException;
+import zab.romik.core.ResourceNotFoundException;
 import zab.romik.service.PropertiesService;
-
-import zab.romik.service.ValueService;
 
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +21,7 @@ import static java.util.Objects.requireNonNull;
  */
 @RestController
 @RequestMapping(Routes.Properties.PROPERTIES_LIST)
-public class Api {
+public class PropertiesValuesController {
 
     /**
      * Сервис для работы со свойствами
@@ -37,7 +35,7 @@ public class Api {
      *                          не должен быть null
      */
     @Autowired
-    public Api(PropertiesService propertiesService) {
+    public PropertiesValuesController(PropertiesService propertiesService) {
         this.propertiesService = requireNonNull(propertiesService, "Properties service must be not null!");
     }
 

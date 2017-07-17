@@ -13,15 +13,15 @@ public class Properties {
 
     @Getter
     @Setter
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-        @Getter
-        @Setter
-        @JsonIgnore
-        @OneToMany(mappedBy = "properties", cascade = CascadeType.REMOVE)
-        private List<Value> value;
+    @Getter
+    @Setter
+    @JsonIgnore
+    @OneToMany(mappedBy = "properties", cascade = CascadeType.REMOVE)
+    private List<Value> value;
 
     @Getter
     @Setter

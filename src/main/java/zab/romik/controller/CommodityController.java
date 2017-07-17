@@ -12,7 +12,7 @@ import zab.romik.entity.Commodity;
 import zab.romik.entity.Country;
 import zab.romik.entity.Properties;
 import zab.romik.enums.CommodityGender;
-import zab.romik.exceptions.ResourceNotFoundException;
+import zab.romik.core.ResourceNotFoundException;
 import zab.romik.service.CategoriesService;
 import zab.romik.service.CommodityService;
 import zab.romik.service.CountryService;
