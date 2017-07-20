@@ -25,7 +25,7 @@ public class CommoditiesController {
     }
 
     @PostMapping("/commodities")
-    public @ResponseBody
+    public 
     HttpStatus save(/*@Valid,*/@RequestBody final Commodity commodity) {
         commodityService.save(commodity);
         return HttpStatus.OK;

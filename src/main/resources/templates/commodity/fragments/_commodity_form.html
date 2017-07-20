@@ -121,12 +121,21 @@
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-sm-6">
-                            <select name="properties" id="properties" class="form-control">
-                                <option value="">Выберите характеристику и значение</option>
-                                <option th:each="property : ${properties}"
-                                        th:value="${property.id}"
-                                        th:text="${property.title}"></option>
-                            </select>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <select name="properties" id="properties" class="form-control">
+                                        <option value="">Выберите характеристику и значение</option>
+                                        <option th:each="property : ${properties}"
+                                                                                                                 th:value="${property.id}"
+                                                                                                                 th:text="${property.title}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                                            <select name="property-values" id="property__values" class="form-control" disabled>
+                                                                <option value="">Выберите свойство</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                         </div>
                         <div class="col-sm-6">
                             <select name="property-values" id="property__values" class="form-control" disabled>
