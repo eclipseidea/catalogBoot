@@ -12,7 +12,7 @@ import zab.romik.service.CommodityService;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(Routes.Commodity.CREATE)
+@RequestMapping("/commodities")
 public class CommoditiesController {
 
 
@@ -24,8 +24,8 @@ public class CommoditiesController {
         this.commodityService = commodityService;
     }
 
-    @PostMapping("/commodities")
-    public 
+    @PostMapping
+    public
     HttpStatus save(/*@Valid,*/@RequestBody final Commodity commodity) {
         commodityService.save(commodity);
         return HttpStatus.OK;
