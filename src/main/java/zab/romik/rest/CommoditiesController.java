@@ -1,11 +1,9 @@
 package zab.romik.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import zab.romik.Routes;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import zab.romik.entity.Commodity;
 import zab.romik.service.CommodityService;
 
@@ -15,9 +13,7 @@ import javax.validation.Valid;
 @RequestMapping("/commodities")
 public class CommoditiesController {
 
-
     private CommodityService commodityService;
-
 
     @Autowired
     public CommoditiesController(CommodityService commodityService) {
@@ -25,9 +21,7 @@ public class CommoditiesController {
     }
 
     @PostMapping
-    public
-    HttpStatus save(/*@Valid,*/@RequestBody final Commodity commodity) {
-        commodityService.save(commodity);
-        return HttpStatus.OK;
+    public Commodity save(@Valid final Commodity commodity) {
+        return commodityService.save(commodity);
     }
 }

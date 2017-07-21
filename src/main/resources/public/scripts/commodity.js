@@ -13,12 +13,20 @@ $(function () {
         if (propertyId < 1) {
             propertyValuesContainer.attr("disabled", "disabled");
 
-            return ;
+            return;
         }
 
         $.get('/properties/' + propertyId + '/values')
             .then(buildDynamicSelect)
             .fail(showServerError)
+    });
+
+    $("#commodityForm").on("submit", function (e) {
+        e.preventDefault();
+
+        $.post('/commodities', $(this).serializeArray())
+            .then(showSuccessfulCreateProduct)
+            .fail(showErrorCreateProduct);
     });
 
     function buildDynamicSelect(serverResponse) {
@@ -39,20 +47,6 @@ $(function () {
             text: JSON.parse(xhr.responseText).error
         });
     }
-});
-
-$(function () {
-    'use strict';
-    var commodityForm = {};
-    $("#commodityForm").on("submit", function (e) {
-            e.preventDefault();
-
-            $.post('/commodities', $(this). serializeArray())
-                .then(showSuccessfulCreateProduct)
-                .fail(showErrorCreateProduct);
-    });
-
-});
 
     function showSuccessfulCreateProduct() {
         swal({
@@ -61,10 +55,12 @@ $(function () {
             text: JSON.parse(xhr.responseText).success
         });
     }
-function showErrorCreateProduct() {
+
+    function showErrorCreateProduct() {
         swal({
             title: "Ошибка",
             type: "error",
             text: JSON.parse(xhr.responseText).error
         });
     }
+});

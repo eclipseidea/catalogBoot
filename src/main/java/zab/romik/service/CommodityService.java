@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CommodityService {
 
-    void save(final Commodity commodity);
+    Commodity save(final Commodity commodity);
 
     List<Commodity> findAll();
 

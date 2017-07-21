@@ -76,7 +76,7 @@ public class Commodity {
     @Getter
     @Setter
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
-    private List<ProductToProperty> productToProperties = new ArrayList<ProductToProperty>();
+    private List<ProductToProperty> productToProperties = new ArrayList<>();
 
     @Getter
     @Setter

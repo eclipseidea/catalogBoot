@@ -25,8 +25,8 @@ public class CommodityServiceImpl implements CommodityService {
      * @param form Форма с данными товара который нужно создать
      */
     @Override
-    public void save(final Commodity form) {
-        commodityDao.save(form);
+    public Commodity save(final Commodity form) {
+        return commodityDao.save(form);
     }
 
     public List<Commodity> findAll() {
