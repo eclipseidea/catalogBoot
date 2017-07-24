@@ -3,3 +3,7 @@
 .common-information div.row {
     margin-bottom: 7px;
 }
+
+.form-group .error {
+    border-color: #f93926;
+}

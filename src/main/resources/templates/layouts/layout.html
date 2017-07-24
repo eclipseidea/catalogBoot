@@ -345,10 +345,16 @@
 <script th:src="@{/scripts/plugins/rickshaw/rickshaw.min.js}"></script>
 <!-- End Vendor JS -->
 
+<!-- Define application namespace -->
+<script>
+    window.App = {};
+</script>
+<!-- End define application namespace -->
 
 <!-- Begin XPLOIT JS -->
 <script th:src="@{/scripts/xploit.js}"></script>
 <script th:src="@{/scripts/app/sweetalert.min.js}"></script>
+<script th:src="@{/scripts/Validation.module.js}"></script>
 <script th:src="@{/scripts/commodity.js}"></script>
 <!-- End XPLOIT JS -->
 

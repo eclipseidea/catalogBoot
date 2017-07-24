@@ -23,10 +23,23 @@ $(function () {
 
     $("#commodityForm").on("submit", function (e) {
         e.preventDefault();
+        const that = $(this);
 
-        $.post('/commodities', $(this).serializeArray())
-            .then(showSuccessfulCreateProduct)
-            .fail(showErrorCreateProduct);
+        that.find('label.error').remove();
+        that.find('input, select').removeClass('error');
+
+        $.post('/commodities', that.serializeArray())
+            .done(showSuccessfulCreateProduct)
+            .fail(function(xhr) {
+                const errorResponse = JSON.parse(xhr.responseText);
+
+                const validator = App.Validator(errorResponse, that);
+                if (validator.isValidationErrorsResponse()) {
+                    return validator.renderErrors();
+                }
+
+                showServerError(xhr);
+            });
     });
 
     function buildDynamicSelect(serverResponse) {
@@ -53,14 +66,6 @@ $(function () {
             title: "ok",
             type: "success",
             text: JSON.parse(xhr.responseText).success
-        });
-    }
-
-    function showErrorCreateProduct() {
-        swal({
-            title: "Ошибка",
-            type: "error",
-            text: JSON.parse(xhr.responseText).error
         });
     }
 });

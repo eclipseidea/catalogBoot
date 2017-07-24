@@ -8,9 +8,6 @@
                 <label for="commodityName" class="col-sm-3 control-label">Название *</label>
                 <div class="col-sm-9">
                     <input id="commodityName" placeholder="name" type="text" th:field="*{name}" class="form-control">
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('name')}">
-                        <p th:errors="*{name}"></p>
-                    </div>
                 </div>
             </div>
 
@@ -20,9 +17,6 @@
                 <label for="commodityPrice" class="col-sm-3 control-label">Цена *</label>
                 <div class="col-sm-9">
                     <input id="commodityPrice" placeholder="price" type="text" th:field="*{price}" class="form-control">
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('price')}">
-                        <p th:errors="*{price}"></p>
-                    </div>
                 </div>
             </div>
 
@@ -61,9 +55,7 @@
                 <div class="col-sm-9">
                     <input id="commodityQuantity" placeholder="quantity" type="number" th:field="*{quantity}"
                            class="form-control">
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('quantity')}">
-                        <p th:errors="*{quantity}"></p>
-                    </div>
+                    <p class="errors"></p>
                 </div>
             </div>
 
@@ -78,9 +70,7 @@
                                 th:value="${cat.id}"
                                 th:text="${cat.name}"></option>
                     </select>
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('categories')}">
-                        <p th:errors="*{categories}"></p>
-                    </div>
+                    <p class="errors"></p>
                 </div>
             </div>
 
@@ -95,9 +85,7 @@
                                 th:value="${gender}"
                                 th:text="${gender.name}"></option>
                     </select>
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('gender')}">
-                        <p th:errors="*{gender}"></p>
-                    </div>
+                    <p class="errors"></p>
                 </div>
             </div>
 
@@ -112,9 +100,7 @@
                                 th:value="${cant.id}"
                                 th:text="${cant.name}"></option>
                     </select>
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('country')}">
-                        <p th:errors="*{country}"></p>
-                    </div>
+                    <p class="errors"></p>
                 </div>
             </div>
 
