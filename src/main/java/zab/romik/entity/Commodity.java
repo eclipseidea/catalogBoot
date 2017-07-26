@@ -80,6 +80,12 @@ public class Commodity {
 
     @Getter
     @Setter
+    @NotNull
+    @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
+    private List<Photo> photos = new ArrayList<>();
+
+    @Getter
+    @Setter
     @OneToOne
     @NotNull
     private Categories categories;
