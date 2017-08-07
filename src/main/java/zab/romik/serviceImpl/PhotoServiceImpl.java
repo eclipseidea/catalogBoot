@@ -46,7 +46,6 @@ public class PhotoServiceImpl implements PhotoService {
     @Override
     public void savePhoto(final List <MultipartFile> files) {
         for (MultipartFile file: files) {
-            photoDao.save(new Photo(file.getOriginalFilename()));
             try {
                 byte[] bytes = file.getBytes();
                 Path path = Paths.get(folderToUpload + file.getOriginalFilename());
@@ -55,6 +54,7 @@ public class PhotoServiceImpl implements PhotoService {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            photoDao.save(new Photo(file.getOriginalFilename()));
         }
     }
 
