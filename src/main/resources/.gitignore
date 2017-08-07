@@ -1,2 +1,3 @@
 # Игнорируем dev профиль, чтоб у каждого разработчика он свой был
 application-dev.properties
+projectimages/
