@@ -14,8 +14,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.nio.file.Path;
 import java.nio.file.Files;
-import java.util.StringJoiner;
-
 
 @Service
 public class PhotoServiceImpl implements PhotoService {
