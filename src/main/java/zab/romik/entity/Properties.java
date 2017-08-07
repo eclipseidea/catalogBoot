@@ -6,25 +6,18 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@ToString
-@EqualsAndHashCode
+@Data
 @Entity
 public class Properties {
 
-    @Getter
-    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Getter
-    @Setter
     @JsonIgnore
     @OneToMany(mappedBy = "properties", cascade = CascadeType.REMOVE)
     private List<Value> value;
 
-    @Getter
-    @Setter
     private String title;
 
     public Properties() {

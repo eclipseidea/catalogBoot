@@ -123,20 +123,42 @@
                         </div>
                     </div>
                 </div>
+            </div>
+<!--форма по загрузки файтов-->
+            <hr/>
 
-                <hr/>
-
-                <div class="form-group">
-                    <label for="deleted" class="checkbox-default-primary col-sm-9 col-sm-offset-3">
-                        <input type="checkbox" th:field="*{deleted}" id="deleted">
-                        <span>(Снят с продажи)</span>
-                    </label>
+            <div class="form-group">
+                <div class="col-sm-3 control-label">
+                    <label for="fileupload">Upload images</label>
+                </div>
+                <div class="col-sm-9">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>Add files</span>
+                        <input type="file" id="fileupload" name="files[]" multiple>
+                    </span>
+                    <!-- The global progress bar -->
+                    <div id="progress" class="progress">
+                        <div class="progress-bar progress-bar-success"></div>
+                    </div>
+                    <!-- The container for the uploaded files -->
+                    <div id="files" class="files"></div>
                 </div>
             </div>
 
-            <div class="col-sm-9 col-sm-offset-3">
-                <button name="save" type="submit" class="btn btn-primary m-md-t w-150" th:text="${buttonName}"></button>
-                <button type="reset" class="btn btn-grey m-md-t w-150">Очистить форму</button>
+            <hr/>
+
+            <div class="form-group">
+                <label for="deleted" class="checkbox-default-primary col-sm-9 col-sm-offset-3">
+                    <input type="checkbox" th:field="*{deleted}" id="deleted">
+                    <span>(Снят с продажи)</span>
+                </label>
             </div>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3">
+            <button name="save" type="submit" class="btn btn-primary m-md-t w-150" th:text="${buttonName}"></button>
+            <button type="reset" class="btn btn-grey m-md-t w-150">Очистить форму</button>
+        </div>
     </form>
 </div>

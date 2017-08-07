@@ -20,6 +20,9 @@ $(function () {
             .then(buildDynamicSelect)
             .fail(showServerError)
     });
+    /**
+     * метод для отправки данных с формы на сервер
+     */
 
     $("#commodityForm").on("submit", function (e) {
         e.preventDefault();
@@ -30,7 +33,7 @@ $(function () {
 
         $.post('/commodities', that.serializeArray())
             .done(showSuccessfulCreateProduct)
-            .fail(function(xhr) {
+            .fail(function (xhr) {
                 const errorResponse = JSON.parse(xhr.responseText);
 
                 const validator = App.Validator(errorResponse, that);
@@ -53,6 +56,10 @@ $(function () {
             .append("<option value='" + item.id + "'>" + item.value + "</option>");
     }
 
+    /**
+     * функция выводит на экран ошибку сервера по созданию товара
+     * @param xhr
+     */
     function showServerError(xhr) {
         swal({
             title: "Ошибка на сервере",
@@ -61,11 +68,17 @@ $(function () {
         });
     }
 
-    function showSuccessfulCreateProduct() {
+    /**
+     * функция выводит на экран сообщение о успешном создании товара
+     * @param xhr
+     */
+
+    function showSuccessfulCreateProduct(){
         swal({
             title: "ok",
             type: "success",
-            text: JSON.parse(xhr.responseText).success
+            text:  "ok"
+
         });
     }
 });

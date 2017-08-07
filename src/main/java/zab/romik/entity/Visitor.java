@@ -1,34 +1,25 @@
 package zab.romik.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-@ToString
-@EqualsAndHashCode
+@Data
 @Entity
 public class Visitor {
-    @Getter
-    @Setter
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Getter
-    @Setter
+
     private String query;
-    @Getter
-    @Setter
+
     @Column(name = "ip", columnDefinition = "char(15)")
     private String ip;
-    @Getter
-    @Setter
+
     @ManyToOne
     private User user;
-    @Getter
-    @Setter
+
     private LocalDateTime date;
 
     public Visitor() {

@@ -1,38 +1,26 @@
 package zab.romik.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@ToString
-@EqualsAndHashCode
+@Data
 @Entity
 public class Orders_Commodity {
-    @Getter
-    @Setter
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Getter
-    @Setter
+
     private int quantityProduct;
 
-    @Getter
-    @Setter
     private BigDecimal costOfCommodity;
 
-    @Getter
-    @Setter
     @ManyToOne
     private Orders orders;
 
-    @Getter
-    @Setter
     @ManyToOne
     private Commodity commodity;
 

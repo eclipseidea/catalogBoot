@@ -1,3 +1,7 @@
+
+
+
+
 /*!
  * jQuery JavaScript Library v2.0.3
  * http://jquery.com/
@@ -561,7 +565,7 @@ jQuery.extend({
 	each: function( obj, callback, args ) {
 		var value,
 			i = 0,
-			length = obj.length,
+			length = obj.length;
 			isArray = isArraylike( obj );
 
 		if ( args ) {

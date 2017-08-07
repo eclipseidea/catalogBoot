@@ -166,6 +166,7 @@ body.stop-scrolling {
   .sweet-alert .la-ball-fall {
     position: absolute;
     left: 50%;
+
     top: 50%;
     margin-left: -27px;
     margin-top: 4px;
