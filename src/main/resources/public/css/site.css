@@ -1,0 +1,59 @@
+/*border*/
+body {
+    background: #e6e6e6;
+}
+
+body .container-fluid .row .header {
+    flex-wrap: nowrap;
+    display: inline;
+    width: 100%;
+    height: 30vh;
+    border: 4px solid white;
+    border-radius: 4px;
+}
+
+body .container-fluid .row .header .logo {
+    height: 100%;
+    width: 33%;
+    border-right: 4px solid white;
+    border-radius: 4px;
+}
+
+body .container-fluid .row .header .searching {
+    height: 100%;
+    width: 33%;
+}
+
+body .container-fluid .row .header .user-data {
+    height: 100%;
+    width: 33%;
+    border-left: 4px solid white;
+    border-radius: 4px;
+}
+
+body .container-fluid .row .content_container {
+    height: 70vh;
+    width: 100%;
+    display: inline;
+}
+
+body .container-fluid .row .content_container .category {
+    height: 100%;
+    width: 20%;
+    border-right: 4px solid white;
+    border-radius: 4px;
+}
+
+body .container-fluid .row .content_container .content {
+    height: 100%;
+    width: 60%;
+}
+
+body .container-fluid .row .content_container .advert {
+    height: 100%;
+    width: 20%;
+    border-left: 4px solid white;
+    border-radius: 4px;
+}
+
+/*# sourceMappingURL=site.css.map */

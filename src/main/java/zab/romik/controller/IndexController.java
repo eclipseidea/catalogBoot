@@ -8,11 +8,11 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
-        return "index";
+        return "site";
     }
 
-    @GetMapping("/user")
-    public String addUser(){
-        return "redirect:/index";
-    }
+//    @GetMapping("/user")
+//    public String addUser(){
+//        return "redirect:/index";
+//    }
 }
