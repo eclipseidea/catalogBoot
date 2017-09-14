@@ -1,4 +1,4 @@
-package zab.romik.controller;
+package zab.romik.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class CommodityController {
     /**
      * Имя страницы на которой можно создавать товары
      */
-    private static final String CREATE_COMMODITY_VIEW_NAME = "commodity/commodity_create";
+    private static final String CREATE_COMMODITY_VIEW_NAME = "admin/commodity/commodity_create";
 
     /**
      * Имя атрибута которое содержит в себе форму commodity
@@ -132,7 +132,7 @@ public class CommodityController {
     public String Commodity(Model model) {
         model.addAttribute("commodities", commodityService.findAll());
 
-        return "commodity/commodity";
+        return "admin/commodity/commodity";
     }
 
     /**
@@ -189,7 +189,7 @@ public class CommodityController {
     public String view(final Model model, @PathVariable @Min(1) final long id) {
         model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, findOrFail(id));
 
-        return "commodity/show";
+        return "admin/commodity/show";
     }
 
     /**
@@ -217,7 +217,7 @@ public class CommodityController {
     public String update(@PathVariable final long id, final Model model) {
         model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, findOrFail(id));
 
-        return "commodity/commodity_update";
+        return "admin/commodity/commodity_update";
     }
 
     /**
@@ -257,6 +257,4 @@ public class CommodityController {
         }
         return commodity;
     }
-
-
 }

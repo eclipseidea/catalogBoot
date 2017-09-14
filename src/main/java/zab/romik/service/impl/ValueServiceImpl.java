@@ -1,21 +1,22 @@
-package zab.romik.serviceImpl;
+package zab.romik.service.impl;
 
 import org.springframework.stereotype.Service;
 import zab.romik.entity.Categories;
-import zab.romik.service.ProductToPropertiesService;
+import zab.romik.entity.Value;
+import zab.romik.service.ValueService;
 
 import java.util.List;
 @Service
-public class ProductToPropertiesServiceImpl implements ProductToPropertiesService {
+public class ValueServiceImpl implements ValueService {
 
     @Override
-    public void save(ProductToPropertiesService productToPropertiesService) {
+    public void save(Value value) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public List<Categories> findAll() {
+    public List<Value> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -33,7 +34,7 @@ public class ProductToPropertiesServiceImpl implements ProductToPropertiesServic
     }
 
     @Override
-    public void update(ProductToPropertiesService productToPropertiesService) {
+    public void update(Value value) {
         // TODO Auto-generated method stub
 
     }

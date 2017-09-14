@@ -1,4 +1,4 @@
-package zab.romik.serviceImpl;
+package zab.romik.service.impl;
 
 import zab.romik.dao.VisitorDao;
 import zab.romik.entity.Visitor;

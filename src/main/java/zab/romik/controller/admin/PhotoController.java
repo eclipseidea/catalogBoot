@@ -1,33 +1,27 @@
-package zab.romik.controller;
-
+package zab.romik.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import zab.romik.facades.PhotoFacade;
 import zab.romik.service.PhotoService;
 
 import java.util.List;
 
-
-@Controller
+@RestController
 @RequestMapping("/commodity-images")
 public class PhotoController {
-
-    /**
-     * Сервис для работы с файлами
-     */
-    private PhotoService photoService;
-
+    private final PhotoFacade photoFacade;
 
     @Autowired
-    public PhotoController(PhotoService photoService) {
-        this.photoService = photoService;
+    public PhotoController(PhotoFacade photoFacade) {
+        this.photoFacade = photoFacade;
     }
 
     @PostMapping
-    public void saveFile(@RequestParam ("files[]")List<MultipartFile> file) {
-        photoService.savePhoto(file);
+    public void saveFile(@RequestParam("files[]") List<MultipartFile> files) {
+        photoFacade.uploadFilesAndPersistThem(files);
     }
 }
 

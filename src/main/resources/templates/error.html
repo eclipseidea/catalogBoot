@@ -27,9 +27,9 @@
         <div class="error-message text-center">
             <h1 class="fs-96" th:text="${status}">404</h1>
                         <p th:text="${message}">Извините, но запрашиваемый ресурс не был найден</p>
-            <a href="#" th:href="@{/}">
+            <a href="#" th:href="${#request.getHeader('Referer')}">
                 <i class="fa fa-home fa-fw"></i>
-                Вернуться на главную страницу
+                Вернуться на предыдущую страницу
             </a>
 
             <!-- Begin Page Footer -->
