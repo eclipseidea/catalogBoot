@@ -1,4 +1,4 @@
-package zab.romik.controller;
+package zab.romik.controller.site;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +10,4 @@ public class IndexController {
     public String index() {
         return "site";
     }
-
-//    @GetMapping("/user")
-//    public String addUser(){
-//        return "redirect:/index";
-//    }
 }

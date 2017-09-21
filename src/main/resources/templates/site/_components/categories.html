@@ -1,0 +1,5 @@
+<ul th:fragment="categories_navigation">
+    <li th:each="cat : ${categories}">
+        <a href="#" th:text="${cat.name}"></a>
+    </li>
+</ul>

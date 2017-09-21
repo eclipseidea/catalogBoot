@@ -8,16 +8,15 @@ import zab.romik.service.CategoriesService;
 
 import java.util.List;
 
-
 @ControllerAdvice(basePackages = {"zab.romik.controller.site"})
-public class CategoryController {
+public class SiteAdviceController {
     /**
      * Сервис для работы с категориями
      */
     private final CategoriesService categoriesService;
 
     @Autowired
-    public CategoryController(final CategoriesService categoriesService) {
+    public SiteAdviceController(final CategoriesService categoriesService) {
         this.categoriesService = categoriesService;
     }
 
@@ -25,5 +24,4 @@ public class CategoryController {
     public List<Categories> showAllCategories(){
         return categoriesService.findAll();
     }
-
 }

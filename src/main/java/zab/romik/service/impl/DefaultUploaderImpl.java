@@ -21,12 +21,12 @@ public class DefaultUploaderImpl implements Uploader {
      * Стратегия для именования новых файлов
      */
     private final FileNamingStrategy fileNamingStrategy;
+    private final String directoryForUploadingFiles;
 
-    @Value("${screenshot.root.path}")
-    private String directoryForUploadingFiles;
-
-    public DefaultUploaderImpl(FileNamingStrategy fileNamingStrategy) {
+    public DefaultUploaderImpl(FileNamingStrategy fileNamingStrategy,
+                               @Value("${screenshot.root.path}") String directoryForUploadingFiles) {
         this.fileNamingStrategy = fileNamingStrategy;
+        this.directoryForUploadingFiles = directoryForUploadingFiles;
     }
 
     /**
