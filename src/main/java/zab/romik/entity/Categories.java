@@ -1,11 +1,13 @@
 package zab.romik.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
-
-@Data
+@Getter
+@Setter
 @Entity
 public class Categories {
 
@@ -13,8 +15,12 @@ public class Categories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(mappedBy = "categories",cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.LAZY)
     private Categories parent;
+
+    @OneToMany
+    @JoinColumn(referencedColumnName = "id", name = "parent_id")
+    private Set<Categories> children;
 
     private String name;
 

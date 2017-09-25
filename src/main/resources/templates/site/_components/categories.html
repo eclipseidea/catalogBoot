@@ -3,8 +3,8 @@
     <ul>
         <li th:each="cat : ${categories}">
             <a href="#" th:text="${cat.name}"></a>
-            <ul>
-                <li th:each="subcat : ${subcategories}" th:text="${subcat.name}">
+            <ul th:if="${not #lists.isEmpty(cat.children)}">
+                <li th:each="subcat : ${cat.children}">
                     <a href="#" th:text="${subcat.name}"></a>
                 </li>
             </ul>
