@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+
 @Data
 @Entity
 public class Categories {
@@ -12,7 +13,7 @@ public class Categories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @OneToMany(mappedBy = "categories",cascade = CascadeType.REMOVE)
     private Categories parent;
 
     private String name;
