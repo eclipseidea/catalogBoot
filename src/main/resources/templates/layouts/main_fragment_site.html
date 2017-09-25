@@ -14,22 +14,17 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header">
-            <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4 logo">content</div>
-            <div class="col-xs-8 col-sm-8 col-md-4 col-lg-4 searching">content</div>
-            <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4 user-data">content</div>
-        </div>
+        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4 logo">content</div>
+        <div class="col-xs-8 col-sm-8 col-md-4 col-lg-4 searching">content</div>
+        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4 user-data">content</div>
     </div>
 
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 content_container">
-            <div class="col-xs-3 col-sm-3 col-md-4 col-lg-4 category">
-                <ul th:replace="site/_components/categories :: categories_navigation"></ul>
-            </div>
-
+        <div class="hidden-xs hidden-sm col-md-3 col-lg-3 category">
+            <ul th:replace="site/_components/categories :: categories_navigation"></ul>
         </div>
 
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 content">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content">
             <div layout:fragment="commodity_content"></div>
         </div>
     </div>

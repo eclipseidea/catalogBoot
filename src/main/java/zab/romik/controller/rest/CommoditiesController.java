@@ -1,4 +1,4 @@
-package zab.romik.rest;
+package zab.romik.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

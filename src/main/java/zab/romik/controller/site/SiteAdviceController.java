@@ -3,6 +3,8 @@ package zab.romik.controller.site;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import zab.romik.entity.Categories;
 import zab.romik.service.CategoriesService;
 
@@ -21,7 +23,17 @@ public class SiteAdviceController {
     }
 
     @ModelAttribute("categories")
-    public List<Categories> showAllCategories(){
-        return categoriesService.findAll();
+    public List<Categories> showAllCategories() {
+        return categoriesService.findNullParentId();
+    }
+
+    @PostMapping("/subcategories")
+    public List<Categories> findParentId(@PathVariable Long id) {
+        return getSubcategories(id);
+    }
+
+    @ModelAttribute("subcategories")
+    private List<Categories> getSubcategories(Long id) {
+        return categoriesService.findCommoditySubcategory(id);
     }
 }

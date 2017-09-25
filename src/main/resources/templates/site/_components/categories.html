@@ -1,5 +1,13 @@
-<ul th:fragment="categories_navigation">
-    <li th:each="cat : ${categories}">
-        <a href="#" th:text="${cat.name}"></a>
-    </li>
-</ul>
+<div th:fragment="categories_navigation">
+    <h3 class="text">BЫБРАТЬ КАТЕГОРИЮ ТОВАРА</h3>
+    <ul>
+        <li th:each="cat : ${categories}">
+            <a href="#" th:text="${cat.name}"></a>
+            <ul>
+                <li th:each="subcat : ${subcategories}" th:text="${subcat.name}">
+                    <a href="#" th:text="${subcat.name}"></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

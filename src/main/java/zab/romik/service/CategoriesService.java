@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface CategoriesService {
 
+    List<Categories> findCommoditySubcategory(Long id);
+
+    List<Categories> findNullParentId();
+
     void save(Categories categories);
 
     List<Categories> findAll();

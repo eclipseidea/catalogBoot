@@ -11,61 +11,65 @@ body {
 
     .row {
 
-      .header {
-        flex-wrap: nowrap;
-        display: inline;
-        width: 100%;
-        height: 30vh;
-        border: $border_width $border_style $border_color;
-        border-radius: $border_radius;
+      .logo {
 
-        .logo {
-          height: 100%;
-          width: 33%;
-          border-right: $border_width $border_style $border_color;
-          border-radius: $border_radius;
-        }
-
-        .searching {
-          height: 100%;
-          width: 33%;
-
-        }
-
-        .user-data {
-          height: 100%;
-          width: 33%;
-          border-left: $border_width $border_style $border_color;
-          border-radius: $border_radius;
-        }
       }
+
+      .searching {
+
+      }
+
+      .user-data {
+
+      }
+
     }
     .row {
 
-      .content_container {
-        height: 70vh;
-        width: 100%;
-        display: inline;
-
-        .category {
-          height: 100%;
-          width: 20%;
-          border-right: $border_width $border_style $border_color;
-          border-radius: $border_radius
+      .category {
+        .text {
+          font-size: 15pt;
+          color: #8B008B;
+          font-family: Arial, sans-serif;
+          text-align: center;
+          background-color: #e6e6e6;
         }
-
-        .content {
-          height: 100%;
-          width: 60%;
+        ul {
+          width: 100%; /* Ширина меню */
+          list-style: none; /* Для списка убираем маркеры */
+          margin: 0; /* Нет отступов вокруг */
+          padding: 0; /* Убираем поля вокруг текста */
+          font-family: Arial, sans-serif; /* Рубленый шрифт для текста меню */
+          font-size: 10pt; /* Размер названий в пункте меню */
         }
-
-        .advert {
-          height: 100%;
-          width: 20%;
-          border-left: $border_width $border_style $border_color;
-          border-radius: $border_radius
+        li ul {
+          position: absolute; /* Подменю позиционируются абсолютно */
+          display: none; /* Скрываем подменю */
+          margin-left: 165px; /* Сдвигаем подменю вправо */
+          margin-top: -2em; /* Сдвигаем подменю вверх */
+        }
+        li a {
+          display: block; /* Ссылка как блочный элемент */
+          padding: 5px; /* Поля вокруг надписи */
+          text-decoration: none; /* Подчеркивание у ссылок убираем */
+          color: #666; /* Цвет текста */
+          border: 1px solid #ccc; /* Рамка вокруг пунктов меню */
+          background-color: #f0f0f0; /* Цвет фона */
+          border-bottom: none; /* Границу снизу не проводим */
+        }
+        li a:hover {
+          color: #ffe; /* Цвет текста активного пункта */
+          background-color: #5488af; /* Цвет фона активного пункта */
+        }
+        li:hover ul {
+          display: block; /* При выделении пункта курсором мыши отображается подменю */
         }
       }
+
+      .content {
+
+      }
+
     }
   }
 }
