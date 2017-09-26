@@ -14,7 +14,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4 logo">content</div>
+        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4 logo">
+            <div layout:fragment="logo_content"></div>
+        </div>
         <div class="col-xs-8 col-sm-8 col-md-4 col-lg-4 searching">content</div>
         <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4 user-data">content</div>
     </div>
@@ -25,8 +27,9 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content">
-            <div layout:fragment="commodity_content"></div>
+            <ul th:replace="site/_components/commodity_show :: commodity_content"></ul>
         </div>
+
     </div>
 </div>
 <script src="https://unpkg.com/vue"></script>

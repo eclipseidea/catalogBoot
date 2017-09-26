@@ -5,7 +5,7 @@
             <a href="#" th:text="${cat.name}"></a>
             <ul th:if="${not #lists.isEmpty(cat.children)}">
                 <li th:each="subcat : ${cat.children}">
-                    <a href="#" th:text="${subcat.name}"></a>
+                    <a href="#" th:text="${subcat.name}" th:href="@{/comm_show}" th:value="${subcat.id}"></a>
                 </li>
             </ul>
         </li>

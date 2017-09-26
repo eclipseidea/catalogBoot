@@ -38,10 +38,6 @@ public class CategoriesServiceImpl implements CategoriesService {
         categoriesDao.save(categories);
     }
 
-    public List<Categories> findCommoditySubcategory(Long id) {
-        return categoriesDao.findAllByParentId(id);
-    }
-
     public List<Categories> findNullParentId() {
         return categoriesDao.findAllByParentIsNull();
     }
