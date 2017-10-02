@@ -35,7 +35,6 @@ public class CommoditySiteController {
     }
 
     /**
-     *
      * @param id  id запрашиваемой категории
      * @param ui  Свойства которые будут инжектиться в отображение
      * @return    Имя вьюхи которую надо отрендерить
