@@ -67,6 +67,16 @@ body {
       }
 
       .content {
+          #commodity_content {
+            width: 100%;
+            background-color: #fefefe;
+          }
+
+          #product_content{
+            width: 100%;
+            height: 170px;
+            display: inline-flex;
+          }
 
       }
 

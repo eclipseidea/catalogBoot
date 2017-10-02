@@ -1,0 +1,13 @@
+<div layout:decorate="~{/layouts/main_fragment_site}" layout:fragment="site_content">
+        <ul th:if="${not #lists.isEmpty(commodity_list)}">
+            <li th:each="com : ${commodity_list}">
+                <div id="product_content">
+                    <div class="photo"></div>
+                    <div class="cat_description" th:text ="${com.description}"></div>
+                    <div class="price" th:text ="${com.price}"></div>
+                </div>
+            </li>
+
+
+        </ul>
+</div>
