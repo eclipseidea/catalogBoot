@@ -49,7 +49,4 @@ public class CommoditySiteController {
         ui.addAttribute("commodity_list", commodityService.findAll());
             return "site/site_commodity_show";
     }
-
-
-
 }
