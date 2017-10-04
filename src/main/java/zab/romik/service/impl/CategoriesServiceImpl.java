@@ -38,8 +38,9 @@ public class CategoriesServiceImpl implements CategoriesService {
         categoriesDao.save(categories);
     }
 
-    public List<Categories> findCommoditySubcategory(Long id) {
-        return null;
+    @Override
+    public List<Categories> searchByCategory(long id) {
+        return categoriesDao.findAllById(id);
     }
 
     public List<Categories> findNullParentId() {

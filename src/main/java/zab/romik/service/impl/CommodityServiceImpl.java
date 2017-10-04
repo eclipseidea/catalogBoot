@@ -51,4 +51,6 @@ public class CommodityServiceImpl implements CommodityService {
     public void update(Commodity commodity) {
         commodityDao.save(commodity);
     }
+
+
 }

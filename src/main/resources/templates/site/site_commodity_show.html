@@ -1,13 +1,14 @@
-<div layout:decorate="~{/layouts/main_fragment_site}" layout:fragment="site_content">
-        <ul th:if="${not #lists.isEmpty(commodity_list)}">
-            <li th:each="com : ${commodity_list}">
-                <div id="product_content">
-                    <div class="photo"></div>
-                    <div class="cat_description" th:text ="${com.description}"></div>
-                    <div class="price" th:text ="${com.price}"></div>
-                </div>
+<div class="main_category" layout:decorate="~{/layouts/main_fragment_site}" layout:fragment="site_content">
+    <ul th:if="${not #lists.isEmpty(category_list)}">
+        <div id="category_content">
+            <li th:each="cat : ${category_list}">
+                <a id="link" href="#" th:text="${cat.name}"></a>
+                <ul th:if="${not #lists.isEmpty(cat.children)}">
+                    <li th:each="subcat : ${cat.children}">
+                        <a id="linkSub" href="#" th:text="${subcat.name}"></a>
+                    </li>
+                </ul>
             </li>
-
-
-        </ul>
+        </div>
+    </ul>
 </div>

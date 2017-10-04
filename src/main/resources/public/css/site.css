@@ -26,7 +26,7 @@ body {
     /* Подменю позиционируются абсолютно */
     display: none;
     /* Скрываем подменю */
-    margin-left: 165px;
+      margin-left: 160px;
     /* Сдвигаем подменю вправо */
     margin-top: -2em;
     /* Сдвигаем подменю вверх */ }
@@ -53,12 +53,32 @@ body {
   body .container-fluid .row .category li:hover ul {
     display: block;
     /* При выделении пункта курсором мыши отображается подменю */ }
-  body .container-fluid .row .content #commodity_content {
+
+body .container-fluid .row .content .main_category {
+    display: inline-flex;
     width: 100%;
-    background-color: #fefefe; }
-  body .container-fluid .row .content #product_content {
+    background-color: #8CD4F5;
+}
+
+body .container-fluid .row .content ul {
+    list-style: none;
+}
+
+body .container-fluid .row .content #category_content {
     width: 100%;
-    height: 170px;
     display: inline-flex; }
+
+body .container-fluid .row .content .column {
+    text-align: center;
+    width: 33%;
+}
+
+body .container-fluid .row .content #link {
+    color: #d58512;
+}
+
+body .container-fluid .row .content #linkSub {
+    color: #8B008B;
+}
 
 /*# sourceMappingURL=site.css.map */

@@ -46,7 +46,7 @@ public class CommoditySiteController {
             throw new ResourceNotFoundException();
         }
 
-        ui.addAttribute("commodity_list", commodityService.findAll());
+        ui.addAttribute("category_list", categoriesService.searchByCategory(id));
             return "site/site_commodity_show";
     }
 }
