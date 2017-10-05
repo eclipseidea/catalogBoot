@@ -3,13 +3,13 @@
         <ul th:if="${not #lists.isEmpty(category_list)}">
             <li th:each="cat : ${category_list}">
                 <a id="link" href="#" th:text="${cat.name}"></a>
-                <div class="col-sm-4">
+                <p class="col-sm-4">
                     <ul th:if="${not #lists.isEmpty(cat.children)}">
                         <li th:each="subcat : ${cat.children}">
                             <a id="linkSub" href="#" th:text="${subcat.name}"></a>
                         </li>
                     </ul>
-                </div>
+                </p>
             </li>
         </ul>
     </div>
