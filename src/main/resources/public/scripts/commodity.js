@@ -32,7 +32,7 @@ $(function () {
         that.find('input, select').removeClass('error');
 
         $.post('/commodities', that.serializeArray())
-            .done(showSuccessfulCreateProduct)
+            .done()
             .fail(function (xhr) {
                 const errorResponse = JSON.parse(xhr.responseText);
 
@@ -73,12 +73,12 @@ $(function () {
      * @param xhr
      */
 
-    function showSuccessfulCreateProduct(){
+    /*function showSuccessfulCreateProduct(){
         swal({
             title: "ok",
             type: "success",
             text:  "ok"
 
         });
-    }
+     }*/
 });

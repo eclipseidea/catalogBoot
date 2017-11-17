@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import zab.romik.entity.Photo;
 import zab.romik.facades.PhotoFacade;
+import zab.romik.service.PhotoService;
 import zab.romik.service.Uploader;
 
 import java.util.List;
@@ -21,15 +23,26 @@ public class PhotoFacadeImpl implements PhotoFacade {
     /** Cервис для загрузки файлов */
     private final Uploader uploader;
 
-    public PhotoFacadeImpl(Uploader uploader) {
+    private PhotoService photoService;
+
+    public PhotoFacadeImpl(Uploader uploader, PhotoService photoService) {
         this.uploader = uploader;
+        this.photoService = photoService;
     }
 
     @Override
     public void uploadFilesAndPersistThem(List<MultipartFile> files) {
-        final List<String> uploadedFileNames = uploader.uploadAllMultipartFiles(files);
+        List<String> uploadedFileNames = uploader.uploadAllMultipartFiles(files);
+        if (uploadedFileNames.size() != 0) {
+            for (String name : uploadedFileNames) {
+                Photo photo = new Photo();
+                photo.setFileName(name);
+                photoService.save(photo);
+                LOGGER.info("loaded" + uploadedFileNames);
 
-        // persist them
-        LOGGER.info("" + uploadedFileNames);
+            }
+
+
+        }
     }
 }

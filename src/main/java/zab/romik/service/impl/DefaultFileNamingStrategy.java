@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Component
 public class DefaultFileNamingStrategy implements FileNamingStrategy {
-    @Override
+
     public String createNewFileName(MultipartFile sourceFile) {
         final String originalFileName = sourceFile.getOriginalFilename();
         final String randomUUID = UUID.randomUUID().toString();

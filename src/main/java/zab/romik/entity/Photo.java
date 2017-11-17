@@ -1,9 +1,12 @@
 package zab.romik.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Photo {
 
@@ -20,6 +23,12 @@ public class Photo {
 
     public Photo() {
 
+    }
+
+    public Photo(final String fileName, final Commodity commodity, final boolean isIndex) {
+        this.fileName = fileName;
+        this.commodity = commodity;
+        this.isIndex = isIndex;
     }
 
     public Photo(final String fileName) {

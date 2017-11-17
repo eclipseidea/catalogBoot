@@ -1,14 +1,14 @@
 package zab.romik.service;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 import zab.romik.entity.Photo;
 
 import java.util.List;
+
 @Repository
 public interface PhotoService {
 
-    void savePhoto(List <MultipartFile> files);
+    void save(Photo photo);
 
     List<Photo> findAll();
 

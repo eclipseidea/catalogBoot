@@ -4,15 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import zab.romik.Routes;
+import zab.romik.core.ResourceNotFoundException;
 import zab.romik.entity.Categories;
 import zab.romik.entity.Commodity;
 import zab.romik.entity.Country;
 import zab.romik.entity.Properties;
 import zab.romik.enums.CommodityGender;
-import zab.romik.core.ResourceNotFoundException;
 import zab.romik.service.CategoriesService;
 import zab.romik.service.CommodityService;
 import zab.romik.service.CountryService;
@@ -161,6 +164,7 @@ public class CommodityController {
      * @return Редирект на страницу со списком товаров или страница создания товара
      * с ошибками валидации
      */
+
     @PostMapping(Routes.Commodity.CREATE)
     public String processNewCommodity(@ModelAttribute(COMMODITY_MODEL_ATTRIBUTE) @Valid final Commodity commodity,
                                       final BindingResult bindingResult,

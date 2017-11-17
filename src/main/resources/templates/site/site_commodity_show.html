@@ -1,16 +1,18 @@
-<div class="main_category" layout:decorate="~{/layouts/main_fragment_site}" layout:fragment="site_content">
+<div class="container-fluid" layout:decorate="~{/layouts/main_fragment_site}" layout:fragment="site_content">
     <div class="row">
-        <ul th:if="${not #lists.isEmpty(category_list)}">
-            <li th:each="cat : ${category_list}">
-                <a id="link" href="#" th:text="${cat.name}"></a>
-                <p class="col-sm-4">
-                    <ul th:if="${not #lists.isEmpty(cat.children)}">
-                        <li th:each="subcat : ${cat.children}">
-                            <a id="linkSub" href="#" th:text="${subcat.name}"></a>
-                        </li>
-                    </ul>
-                </p>
-            </li>
-        </ul>
+        <div class="col-md-4 " th:each="cat: ${category_list}">
+            <!--<ul class="category-name" th:if="${not #lists.isEmpty(category_list)}">-->
+            <!--<li th:each="cat : ${category_list}">-->
+            <!--<div class="col-sm-4">-->
+            <h3 id="commodity-name" th:text="${cat.name}"></h3>
+            <ul class="category-name" th:if="${not #lists.isEmpty(cat.children)}">
+                <li id="li-point" th:each="subcat : ${cat.children}">
+                    <a id="linkSub" href="#" th:text="${subcat.name}"></a>
+                </li>
+            </ul>
+            <!--</div>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
     </div>
 </div>

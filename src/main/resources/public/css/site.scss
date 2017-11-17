@@ -5,10 +5,7 @@ $border_style: solid;
 $border_color: white;
 
 body {
-  background: #e6e6e6;
-
   .container-fluid {
-
     .row {
 
       .logo {
@@ -67,32 +64,42 @@ body {
       }
 
       .content {
-        .main_category {
-          display: inline-flex;
+        .category-content-main {
           width: 100%;
-          background-color: #8CD4F5;
-        }
-        ul {
-          list-style: none;
-        }
-        #category_content {
-          width: 100%;
-          display: inline-flex;
-        }
-        .column {
-          text-align: center;
-          width: 33%;
-        }
-        #link {
+          background-color: #fefefe;
 
+
+        }
+        .category-name {
+          list-style: none;
+          width: 100%;
+          display: inline-block;
+
+        }
+
+        #li-point {
+          text-align: center;
+
+        }
+        //#point{
+        //  margin-right: 40px;
+        //}
+
+        #category_content {
+
+        }
+
+        #commodity-name {
           color: #d58512;
         }
 
         #linkSub {
-
-          color: #8B008B;
+          color: #8B008B89;
         }
 
+        .col-sm-4 {
+          text-align: center;
+        }
       }
     }
   }

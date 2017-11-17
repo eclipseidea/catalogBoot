@@ -1,14 +1,14 @@
 @charset "UTF-8";
 /*border*/
-body {
-  background: #e6e6e6; }
-  body .container-fluid .row .category .text {
+body .container-fluid .row .category .text {
     font-size: 15pt;
     color: #8B008B;
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #e6e6e6; }
-  body .container-fluid .row .category ul {
+    background-color: #e6e6e6;
+}
+
+body .container-fluid .row .category ul {
     width: 100%;
     /* Ширина меню */
     list-style: none;
@@ -20,17 +20,21 @@ body {
     font-family: Arial, sans-serif;
     /* Рубленый шрифт для текста меню */
     font-size: 10pt;
-    /* Размер названий в пункте меню */ }
-  body .container-fluid .row .category li ul {
+    /* Размер названий в пункте меню */
+}
+
+body .container-fluid .row .category li ul {
     position: absolute;
     /* Подменю позиционируются абсолютно */
     display: none;
     /* Скрываем подменю */
-      margin-left: 160px;
+    margin-left: 160px;
     /* Сдвигаем подменю вправо */
     margin-top: -2em;
-    /* Сдвигаем подменю вверх */ }
-  body .container-fluid .row .category li a {
+    /* Сдвигаем подменю вверх */
+}
+
+body .container-fluid .row .category li a {
     display: block;
     /* Ссылка как блочный элемент */
     padding: 5px;
@@ -44,41 +48,45 @@ body {
     background-color: #f0f0f0;
     /* Цвет фона */
     border-bottom: none;
-    /* Границу снизу не проводим */ }
-  body .container-fluid .row .category li a:hover {
+    /* Границу снизу не проводим */
+}
+
+body .container-fluid .row .category li a:hover {
     color: #ffe;
     /* Цвет текста активного пункта */
     background-color: #5488af;
-    /* Цвет фона активного пункта */ }
-  body .container-fluid .row .category li:hover ul {
+    /* Цвет фона активного пункта */
+}
+
+body .container-fluid .row .category li:hover ul {
     display: block;
-    /* При выделении пункта курсором мыши отображается подменю */ }
-
-body .container-fluid .row .content .main_category {
-    display: inline-flex;
-    width: 100%;
-    background-color: #8CD4F5;
+    /* При выделении пункта курсором мыши отображается подменю */
 }
 
-body .container-fluid .row .content ul {
+body .container-fluid .row .content .category-content-main {
+    width: 100%;
+    background-color: #fefefe;
+}
+
+body .container-fluid .row .content .category-name {
     list-style: none;
-}
-
-body .container-fluid .row .content #category_content {
     width: 100%;
-    display: inline-flex; }
-
-body .container-fluid .row .content .column {
-    text-align: center;
-    width: 33%;
+    display: inline-block;
 }
 
-body .container-fluid .row .content #link {
+body .container-fluid .row .content #li-point {
+    text-align: center;
+}
+
+body .container-fluid .row .content #commodity-name {
     color: #d58512;
 }
-
 body .container-fluid .row .content #linkSub {
-    color: #8B008B;
+    color: #8B008B89;
+}
+
+body .container-fluid .row .content .col-sm-4 {
+    text-align: center;
 }
 
 /*# sourceMappingURL=site.css.map */

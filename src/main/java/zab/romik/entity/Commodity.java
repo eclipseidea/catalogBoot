@@ -1,6 +1,6 @@
 package zab.romik.entity;
 
-import lombok.*;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import zab.romik.enums.CommodityGender;
@@ -52,13 +52,15 @@ public class Commodity {
     @Column(columnDefinition = "text")
     private String description;
 
+
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
     private List<Orders_Commodity> orders_Commodity = new ArrayList<Orders_Commodity>();
+
 
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
     private List<ProductToProperty> productToProperties = new ArrayList<>();
 
-    @NotNull
+
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
     private List<Photo> photos = new ArrayList<>();
 
