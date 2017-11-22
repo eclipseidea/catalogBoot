@@ -47,11 +47,6 @@ public abstract class Routes {
          * Роут для обновления товара
          */
         public static final String UPDATE = "/commodity/{id}/update";
-
-        /**
-         * Роут для обработки действия обновления
-         */
-        public static final String UPDATE_PROCESS = "/commodity/update";
     }
 
     /**

@@ -1,5 +1,6 @@
 package zab.romik.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -52,7 +53,7 @@ public class Commodity {
     @Column(columnDefinition = "text")
     private String description;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
     private List<Orders_Commodity> orders_Commodity = new ArrayList<Orders_Commodity>();
 

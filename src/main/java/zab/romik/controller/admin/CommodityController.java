@@ -3,11 +3,9 @@ package zab.romik.controller.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import zab.romik.Routes;
 import zab.romik.core.ResourceNotFoundException;
@@ -21,7 +19,6 @@ import zab.romik.service.CommodityService;
 import zab.romik.service.CountryService;
 import zab.romik.service.PropertiesService;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
 
@@ -37,16 +34,6 @@ public class CommodityController {
      * Имя атрибута которое содержит в себе форму commodity
      */
     private static final String COMMODITY_MODEL_ATTRIBUTE = "commodity";
-
-    /**
-     * Ключ в сессии для сообщения о том, что товар был успешно создан
-     */
-    private static final String COMMODITY_FLASH_MSG_KEY = "flashMessage";
-
-    /**
-     * Имя формы которое будет использоваться при редиректе с ошибками, чтобы спринг смог их подхватить
-     */
-    private static final String COMMODITY_FORM_ERRORS_NAME_FOR_REDIRECT = "org.springframework.validation.BindingResult.commodity";
 
     /**
      * Сервис для работы с товарами
@@ -132,7 +119,7 @@ public class CommodityController {
      * @return Имя вьюхи которую надо отрендерить
      */
     @GetMapping(Routes.Commodity.LIST)
-    public String Commodity(Model model) {
+    public String allCommodities(Model model) {
         model.addAttribute("commodities", commodityService.findAll());
 
         return "admin/commodity/commodity";
@@ -152,34 +139,6 @@ public class CommodityController {
         }
 
         return CREATE_COMMODITY_VIEW_NAME;
-    }
-
-    /**
-     * Создает новый товар в системе перед этим его валидирует
-     *
-     * @param commodity          Товар который мы создаем
-     * @param bindingResult      Результат валидации формы товара
-     * @param redirectAttributes Класс для хранения аттрибутов которые потом можно достать после
-     *                           редиректа
-     * @return Редирект на страницу со списком товаров или страница создания товара
-     * с ошибками валидации
-     */
-
-    @PostMapping(Routes.Commodity.CREATE)
-    public String processNewCommodity(@ModelAttribute(COMMODITY_MODEL_ATTRIBUTE) @Valid final Commodity commodity,
-                                      final BindingResult bindingResult,
-                                      final RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute(COMMODITY_FORM_ERRORS_NAME_FOR_REDIRECT, bindingResult);
-            redirectAttributes.addFlashAttribute(COMMODITY_MODEL_ATTRIBUTE, commodity);
-
-            return Routes.redirectTo(Routes.Commodity.CREATE);
-        }
-
-        redirectAttributes.addFlashAttribute(COMMODITY_FLASH_MSG_KEY, "Товар успешно добавлен в магазин");
-        commodityService.save(commodity);
-
-        return Routes.redirectTo(Routes.Commodity.LIST);
     }
 
     /**
@@ -205,7 +164,7 @@ public class CommodityController {
     @GetMapping(Routes.Commodity.DELETE)
     public String delete(@PathVariable long id, final RedirectAttributes redirectAttributes) {
         commodityService.delete(findOrFail(id));
-        redirectAttributes.addFlashAttribute(COMMODITY_FLASH_MSG_KEY, "Товар успешно снят с продажи");
+        redirectAttributes.addFlashAttribute("commoditySuccessfulDeleted", "Товар успешно снят с продажи");
 
         return Routes.redirectToWithId(Routes.Commodity.SHOW, id);
     }
@@ -222,29 +181,6 @@ public class CommodityController {
         model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, findOrFail(id));
 
         return "admin/commodity/commodity_update";
-    }
-
-    /**
-     * Сохранение товара после изменения
-     *
-     * @param commodity     Модель товара
-     * @param bindingResult Результат валидации
-     * @param attributes    Аттрибуты редиректа
-     * @return Название роута на которую будем редиректиться
-     */
-    @PostMapping(Routes.Commodity.UPDATE_PROCESS)
-    public String update(@ModelAttribute(COMMODITY_MODEL_ATTRIBUTE) @Valid Commodity commodity,
-                         BindingResult bindingResult,
-                         RedirectAttributes attributes) {
-        if (bindingResult.hasErrors()) {
-            attributes.addFlashAttribute(COMMODITY_FORM_ERRORS_NAME_FOR_REDIRECT, bindingResult);
-            attributes.addFlashAttribute(COMMODITY_MODEL_ATTRIBUTE, commodity);
-            return Routes.redirectToWithId(Routes.Commodity.UPDATE, commodity.getId());
-        }
-        attributes.addFlashAttribute(COMMODITY_FLASH_MSG_KEY, "Товар успешно обновлен");
-        commodityService.update(commodity);
-
-        return Routes.redirectToWithId(Routes.Commodity.SHOW, commodity.getId());
     }
 
     /**

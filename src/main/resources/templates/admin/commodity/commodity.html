@@ -3,8 +3,6 @@
 <div layout:decorate="~{/layouts/layout}" layout:fragment="content">
     <h2>Управление товарами</h2><br />
 
-    <div class="alert alert-success" th:if="${flashMessage != null}" th:text="${flashMessage}"></div>
-
     <div class="tab-container tab-colored-arrow-down tab-top tab-primary">
         <ul class="nav nav-tabs">
             <li class="active">
@@ -54,16 +52,19 @@
 
                     <!-- Если товары есть, то выводим их в таблицу -->
                     <tbody th:if="${!commodities.isEmpty()}">
-                        <tr data-th-each="commodity : ${commodities}">
-                            <td data-th-text="${commodity.name}" width="12px">...</td>
-                            <td data-th-text="${commodity.price}" width="12px">...</td>
-                            <td data-th-text="${commodity.gender != null} ? ${commodity.gender.name} : 'Пол не указан'" width="12px">...</td>
-                            <td data-th-text="${commodity.age + '+'}" width="12px">...</td>
-                            <td data-th-text="${commodity.quantity}" width="12px">...</td>
-                            <td data-th-text="${commodity.categories != null} ? ${commodity.categories.name} : 'Категория не указана'" width="12px"></td>
-                            <td data-th-text="${commodity.country != null} ? ${commodity.country.name} : 'Страна поставщик не указана'"></td>
-                            <td>
-                                <div th:replace="/commodity/fragments/status :: status (commodity=${commodity})"></div>
+                    <tr data-th-each="commodity : ${commodities}">
+                        <td data-th-text="${commodity.name}" width="12px"></td>
+                        <td data-th-text="${commodity.price}" width="12px"></td>
+                        <td data-th-text="${commodity.gender != null} ? ${commodity.gender.name} : 'Пол не указан'"
+                            width="12px">...
+                        </td>
+                        <td data-th-text="${commodity.age + '+'}" width="12px"></td>
+                        <td data-th-text="${commodity.quantity}" width="12px"></td>
+                        <td data-th-text="${commodity.categories != null} ? ${commodity.categories.name} : 'Категория не указана'"
+                            width="12px"></td>
+                        <td data-th-text="${commodity.country != null} ? ${commodity.country.name} : 'Страна поставщик не указана'"></td>
+                        <td>
+                            <div th:replace="/admin/commodity/fragments/status :: status (commodity=${commodity})"></div>
                             </td>
                             <td>
                                 <a href="#" th:href="@{/commodity/{id}(id=${commodity.id})}">
@@ -71,7 +72,7 @@
                                     Просмотреть
                                 </a>
                             </td>
-                        </tr>
+                    </tr>
                     </tbody>
                 </table>
             </div>

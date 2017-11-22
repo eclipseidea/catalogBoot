@@ -32,7 +32,9 @@ $(function () {
         that.find('input, select').removeClass('error');
 
         $.post('/commodities', that.serializeArray())
-            .done()
+            .done(function () {
+                appendSuccessfulMessageToPage();
+            })
             .fail(function (xhr) {
                 const errorResponse = JSON.parse(xhr.responseText);
 
@@ -51,6 +53,10 @@ $(function () {
         propertyValuesContainer.removeAttr('disabled');
     }
 
+    function appendSuccessfulMessageToPage() {
+        $(".alert-block").html("<div class='alert alert-success'> товар успешно сохранен </div>");
+    }
+
     function appendOption(item) {
         propertyValuesContainer
             .append("<option value='" + item.id + "'>" + item.value + "</option>");
@@ -67,18 +73,4 @@ $(function () {
             text: JSON.parse(xhr.responseText).error
         });
     }
-
-    /**
-     * функция выводит на экран сообщение о успешном создании товара
-     * @param xhr
-     */
-
-    /*function showSuccessfulCreateProduct(){
-        swal({
-            title: "ok",
-            type: "success",
-            text:  "ok"
-
-        });
-     }*/
 });
