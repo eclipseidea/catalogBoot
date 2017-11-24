@@ -55,7 +55,7 @@ public class Commodity {
 
     @JsonIgnore
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
-    private List<Orders_Commodity> orders_Commodity = new ArrayList<Orders_Commodity>();
+    private List<Orders_Commodity> orders_Commodity = new ArrayList<>();
 
 
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)

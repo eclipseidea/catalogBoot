@@ -55,11 +55,6 @@ $(function () {
         propertyValuesContainer.removeAttr('disabled');
     }
 
-    function appendSuccessfulMessageToPage(sessionStorage) {
-        sessionStorage.setItem("massage", "товар успешно сохранен");
-        $(".alert-block").append("<div class='alert alert-success'> + message + </div>");
-    }
-
     function appendOption(item) {
         propertyValuesContainer
             .append("<option value='" + item.id + "'>" + item.value + "</option>");
