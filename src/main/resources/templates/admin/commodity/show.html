@@ -1,5 +1,4 @@
 <!-- View concrete commodity -->
-
 <div layout:decorate="~{/layouts/layout}" layout:fragment="content">
     <div class="page-title">
         <h3 th:text="|Название: ${commodity.name}|"></h3>
@@ -8,11 +7,11 @@
         </p>
     </div><br>
 
+    <div class="alert-block"></div>
+
     <div th:if="${commoditySuccessfulDeleted != null}"
          th:text="${commoditySuccessfulDeleted}"
          class="alert alert-success"></div>
-
-    <div id="paragraphId"></div>
 
     <div class="row">
         <div class="col-md-9">

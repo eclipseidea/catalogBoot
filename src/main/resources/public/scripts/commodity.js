@@ -32,8 +32,10 @@ $(function () {
         that.find('input, select').removeClass('error');
 
         $.post('/commodities', that.serializeArray())
-            .done(function () {
-                appendSuccessfulMessageToPage();
+            .done(function (response) {
+                RedirectAttributes.addFlashMessage('commodityWasSuccessfulCreated', 'товар успешно сохранен');
+
+                location.href = "/commodity/" + response.id;
             })
             .fail(function (xhr) {
                 const errorResponse = JSON.parse(xhr.responseText);
@@ -53,8 +55,9 @@ $(function () {
         propertyValuesContainer.removeAttr('disabled');
     }
 
-    function appendSuccessfulMessageToPage() {
-        $(".alert-block").html("<div class='alert alert-success'> товар успешно сохранен </div>");
+    function appendSuccessfulMessageToPage(sessionStorage) {
+        sessionStorage.setItem("massage", "товар успешно сохранен");
+        $(".alert-block").append("<div class='alert alert-success'> + message + </div>");
     }
 
     function appendOption(item) {
