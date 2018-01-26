@@ -261,6 +261,7 @@ var Widgets = (function() {
             for (var i = 0; i < files.length; i++) {
 
                 var file = files[i];
+                //noinspection JSUnresolvedVariable
                 totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
 
                 for (var step = 0; step < totalSteps; step++) {

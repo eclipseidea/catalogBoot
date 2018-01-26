@@ -3,7 +3,7 @@ $(function () {
 
     const propertyValuesContainer = $("#property__values");
 
-    $("#properties").on('change', function () {
+    $("#properties").change(function () {
         const that = $(this);
         const propertyId = that.val();
 
@@ -24,7 +24,8 @@ $(function () {
      * метод для отправки данных с формы на сервер
      */
 
-    $("#commodityForm").on("submit", function (e) {
+    $("#commodityForm").submit(function (e) {
+
         e.preventDefault();
         const that = $(this);
 
@@ -41,6 +42,7 @@ $(function () {
                 const errorResponse = JSON.parse(xhr.responseText);
 
                 const validator = App.Validator(errorResponse, that);
+
                 if (validator.isValidationErrorsResponse()) {
                     return validator.renderErrors();
                 }

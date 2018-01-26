@@ -129,29 +129,22 @@
             <!--форма по загрузки файтов-->
             <hr/>
 
-            <div class="file-form-group">
+            <div class="form-group">
                 <div class="col-sm-3 control-label">
-                    <label for="fileupload">Upload images</label>
+                    <label for="fileupload">Upload images *</label>
                 </div>
                 <div class="col-sm-9">
-                                <span class="btn btn-success fileinput-button">
-                                    <i class="glyphicon glyphicon-plus"></i>
-                                    <span>Add files</span>
-                                    <input type="file" id="fileupload" name="files[]" multiple>
-                                </span>
-                    <!--The global progress -->
-                    <div id="progress" class="progress">
-                        <div class="progress-bar progress-bar-success"></div>
-                    </div>
-                    <!--The container for the uploaded files-->
-                    <div id="files" class="files"></div>
-                    <!--form for checkboxes-->
+                    <input type="file" id="fileupload" multiple accept="image/*"/>
+                    <div id="files"></div>
+                    <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"  id="files">-->
 
-
+                    <!--<input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">-->
+                    <!--<a href="#" id="fileSelect">Select some files</a>-->
+                    <!--<div id="fileList"></div>-->
+                    <!--<input type="file" id="fileupload" multiple accept="image/*">-->
+                    <!--<div id = "files"></div>-->
                 </div>
-                <!--<div class="settIndexFile" id="settIndexFile">
-                    ghbdtn
-                </div>-->
+
             </div>
 
             <hr/>

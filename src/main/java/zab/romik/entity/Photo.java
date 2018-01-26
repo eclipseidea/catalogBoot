@@ -31,8 +31,7 @@ public class Photo {
         this.isIndex = isIndex;
     }
 
-    public Photo(final String fileName) {
+    public Photo(String fileName) {
         this.fileName = fileName;
-
     }
 }
