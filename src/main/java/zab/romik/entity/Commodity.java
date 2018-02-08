@@ -61,7 +61,6 @@ public class Commodity {
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
     private List<ProductToProperty> productToProperties = new ArrayList<>();
 
-    @NotNull
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
     private List<Photo> photos = new ArrayList<>();
 

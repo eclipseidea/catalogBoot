@@ -1,29 +1,128 @@
 $(document).ready(function () {
 
-    var counter = null;
+    'use strict';
 
-    $('input[type="file"]').change(function (e) {
+    let uploadButton = $('<div class="file-upload">');
 
-        for (let i = 0; i < this.files.length; i++) {
+    let label = $('<label class= "label">').appendTo(uploadButton);
 
-            counter++;
+    $(label).append($('<input type="file" multiple accept="image/!*"/>'))
 
-            var url = URL.createObjectURL(e.target.files[i]);
+        .append($('<span class="span">ADD FILES</span>'));
 
-            var element = $('<img/>').appendTo('#files');
 
-            $(element).addClass('elem-' + counter);
+    $('#file-upload-button-container').append(uploadButton);
 
-            element.onload = function () {
-                window.URL.revokeObjectURL(this.src);
-            };
+    $('input[type = "file"]').change(function (e) {
 
-            element.attr('src', url);
-        }
+        $.each(this.files, function (index, file) {
 
-    })
+            if (file.name !== null && file.type) {
+
+                uploadButton.addClass('hidden');
+
+                let size = function () {
+
+                    if ($('#files').width() > 700) {
+
+                        return '40%'
+                    }
+
+                    return '100%'
+                };
+
+                let url = URL.createObjectURL(e.target.files[index]);
+
+                let div = $('<div/>')
+
+                    .css({'margin-bottom': '40px;', 'width': size})
+
+                    .appendTo($('#files'));
+
+
+                let img = $('<img/>').appendTo(div)
+
+                    .attr('src', url)
+
+                    .css({'width': '100%', 'height': 'auto', 'margin-bottom': '5px'})
+
+                    .load = function () {
+                    window.URL.revokeObjectURL(this.src);
+                }
+
+
+                let deleteButton = $('<button type="button" class="delete_file" data-id="delete">DELETE</button>/')
+
+                    .css({
+                        'position': 'relative',
+                        'width': '20%',
+                        'height': '40px',
+                        'background': '#FF0000',
+                        'border-radius': '30px',
+                        'padding': '8px 4px',
+                        'text-align': 'center',
+                    });
+
+
+                let radioButton = $('<div class=".switch">')
+                    .append($('<input type="checkbox" class="_input"/>'))
+                    .append('<label class="_label"><i class="i"></i></label>');
+
+
+                div.addClass('element').append(uploadButton, deleteButton, radioButton)
+                    .prepend('<br/>');
+            }
+
+            uploadButton.removeClass('hidden');
+        });
+
+
+        let elementList = document.querySelectorAll('.delete_file');
+
+        $(elementList).click(function () {
+
+            if (($(this).parent()).is('.element:last')) {
+
+                $(this).parent().prev().append(uploadButton);
+
+            }
+
+            if (($(this).parent().is('.element:last')) && ($(this).parent().is('.element:first'))) {
+
+                $('#file-upload-button-container').append(uploadButton);
+            }
+
+            $(this).parent().remove();
+
+        });
+
+
+    });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const uploadButton = $('<button/>')
 //     .addClass('btn btn-primary')
 //     .prop('disabled', true)
