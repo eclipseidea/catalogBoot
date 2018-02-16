@@ -1,133 +1,20 @@
+@charset "UTF-8";
 
-.file-upload {
-
-    position: relative; /* Даем возможность делать позиционирование, внутри данного элемента */
-    overflow: hidden; /* Все что выходит за пределы - скрываем */
-    width: 20%; /* Задаем ширину кнопки выбора файла */
-    height: 40px; /* Задаем высоту кнопки выбора файла */
-    background: #0000FF;
-    border-radius: 30px;
-    padding: 8px 4px;
-    text-align: center;
-    float: left;
-
-}
-
-.file-upload:hover {
-    background: #4169E1;
-
-}
-
-.file-upload input[type="file"] {
-    display: none; /* Обязательно скрываем настоящий Input File */
-}
-
-.file-upload .label {
-    /* Растягиваем label на всю возможную площадь блока .file-upload */
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
-
-.file-upload .span {
-    line-height: 36px; /* Делаем вертикальное выравнивание текста, который написан на кнопке */
-    color: #FFFFFF;
-
-}
-
-.file-upload #deleteButton .radio {
-    display: inline-flex;
-}
-
-.delete_file {
-    color: #FFFFFF;
-}
+@import "radio-button.css";
+@import "delete_file_button.css";
+@import "upload_button.css";
 
 .hidden {
 
     display: none;
 }
 
-.switch {
-    width: 180px;
-    height: 50px;
-    position: relative
+.file__control-panel {
+    padding: 0;
+    margin: 0;
 }
 
-.switch ._label {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background: #a5a39d;
-    border-radius: 40px;
-    box-shadow: inset 0 3px 8px 1px rgba(0, 0, 0, 0.2),
-    0 1px 0 rgba(255, 255, 255, 0.5);
+.file__control-panel .li {
+    display: inline-block;
 }
 
-.switch ._label:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: -8px;
-    right: -8px;
-    bottom: -8px;
-    left: -8px;
-    border-radius: inherit;
-    background: #ccc; /* Fallback */
-    background: linear-gradient(#f2f2f2, #ababab);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3),
-    0 1px 1px rgba(0, 0, 0, 0.25);
-}
-
-.switch ._label:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: -18px;
-    right: -18px;
-    bottom: -18px;
-    left: -18px;
-    border-radius: inherit;
-    background: #eee; /* Fallback */
-    background: linear-gradient(#e5e7e6, #eee);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    -webkit-filter: blur(1px); /* Smooth trick */
-    filter: blur(1px); /* Future-proof */
-}
-
-.switch ._label _i:before {
-    content: "off";
-    position: absolute;
-    top: 50%;
-    right: -50%;
-    margin-top: -12px;
-    color: #666; /* Fallback */
-    color: rgba(0, 0, 0, 0.4);
-    font-style: normal;
-    font-weight: bold;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 24px;
-    text-transform: uppercase;
-    text-shadow: 0 1px 0 #bcb8ae, 0 -1px 0 #97958e;
-}
-
-.switch _input:checked ~ _label { /* Background */
-    background: #9abb82;
-}
-
-.switch _input:checked ~ _label _i { /* Toggle */
-    left: auto;
-    right: -1%;
-}
-
-.switch _input:checked ~ _label _i:before { /* On/off */
-    content: "on";
-    right: 115%;
-    color: #82a06a;
-    text-shadow: 0 1px 0 #afcb9b, 0 -1px 0 #6b8659;
-}

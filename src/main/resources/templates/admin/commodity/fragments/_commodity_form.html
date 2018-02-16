@@ -9,7 +9,8 @@
             <div class="form-group">
                 <label for="commodityName" class="col-sm-3 control-label">Название *</label>
                 <div class="col-sm-9">
-                    <input id="commodityName" placeholder="name" type="text" th:field="*{name}" class="form-control">
+                    <input id="commodityName" name="name" placeholder="name" type="text" th:field="*{name}"
+                           class="form-control">
                 </div>
             </div>
 
@@ -18,7 +19,8 @@
             <div class="form-group">
                 <label for="commodityPrice" class="col-sm-3 control-label">Цена *</label>
                 <div class="col-sm-9">
-                    <input id="commodityPrice" placeholder="price" type="text" th:field="*{price}" class="form-control">
+                    <input id="commodityPrice" name="price" placeholder="price" type="text" th:field="*{price}"
+                           class="form-control">
                 </div>
             </div>
 
@@ -27,7 +29,7 @@
             <div class="form-group">
                 <label for="commodityDescription" class="col-sm-3 control-label">Описание</label>
                 <div class="col-sm-9">
-                        <textarea id="commodityDescription"
+                        <textarea id="commodityDescription" name="description"
                                   th:field="*{description}"
                                   class="form-control">
 
@@ -43,7 +45,8 @@
             <div class="form-group">
                 <label for="commodityAge" class="col-sm-3 control-label">Рекомендуемый возраст</label>
                 <div class="col-sm-9">
-                    <input id="commodityAge" placeholder="age" type="number" th:field="*{age}" class="form-control">
+                    <input id="commodityAge" name="age" placeholder="age" type="number" th:field="*{age}"
+                           class="form-control">
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('age')}">
                         <p th:errors="*{age}"></p>
                     </div>
@@ -55,7 +58,8 @@
             <div class="form-group">
                 <label for="commodityQuantity" class="col-sm-3 control-label">Количество товара *</label>
                 <div class="col-sm-9">
-                    <input id="commodityQuantity" placeholder="quantity" type="number" th:field="*{quantity}"
+                    <input id="commodityQuantity" name="quantity" placeholder="quantity" type="number"
+                           th:field="*{quantity}"
                            class="form-control">
                     <p class="errors"></p>
                 </div>
@@ -66,7 +70,7 @@
             <div class="form-group">
                 <label for="categories" class="col-sm-3 control-label">Категория *</label>
                 <div class="col-sm-9">
-                    <select name="categories" id="categories" th:field="*{categories}" class="form-control">
+                    <select name="categoryId" id="categories" th:field="*{categoryId}" class="form-control">
                         <option value="">Выберите категорию</option>
                         <option th:each="cat : ${categories}"
                                 th:value="${cat.id}"
@@ -96,7 +100,7 @@
             <div class="form-group">
                 <label for="countries" class="col-sm-3 control-label">Страна производитель *</label>
                 <div class="col-sm-9">
-                    <select name="countries" id="countries" th:field="*{country}" class="form-control">
+                    <select name="countryId" id="countries" th:field="*{countryId}" class="form-control">
                         <option value="">Выберите страну</option>
                         <option th:each="cant : ${countries}"
                                 th:value="${cant.id}"
@@ -143,7 +147,7 @@
 
             <div class="form-group">
                 <label for="deleted" class="checkbox-default-primary col-sm-9 col-sm-offset-3">
-                    <input type="checkbox" th:field="*{deleted}" id="deleted">
+                    <input type="checkbox" id="deleted">
                     <span>(Снят с продажи)</span>
                 </label>
             </div>

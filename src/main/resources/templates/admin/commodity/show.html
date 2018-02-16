@@ -5,13 +5,18 @@
         <p>
             <a href="#" th:href="@{/commodity}">Назад к списку товаров</a>
         </p>
-    </div><br>
+    </div>
+    <br>
 
     <div class="alert-block"></div>
 
     <div th:if="${commoditySuccessfulDeleted != null}"
          th:text="${commoditySuccessfulDeleted}"
          class="alert alert-success"></div>
+
+    <div th:if="${commodityWasNotDeleted != null}"
+         th:text="${commodityWasNotDeleted}"
+         class="alert alert-danger"></div>
 
     <div class="row">
         <div class="col-md-9">
@@ -52,12 +57,12 @@
 
                     <div class="row">
                         <div class="col-md-4"><b>Категория</b></div>
-                        <div class="col-md-8" th:text="${commodity.categories?.name}"></div>
+                        <div class="col-md-8" th:text="${commodity.categoryName}"></div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-4"><b>Поставщик</b></div>
-                        <div class="col-md-8" th:text="${commodity.country?.name}"></div>
+                        <div class="col-md-8" th:text="${commodity.countryName}"></div>
                     </div>
 
                     <!--<div class="row">

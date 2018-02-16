@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import zab.romik.Routes;
-import zab.romik.core.ResourceNotFoundException;
 import zab.romik.entity.Categories;
-import zab.romik.entity.Commodity;
 import zab.romik.entity.Country;
 import zab.romik.entity.Properties;
 import zab.romik.enums.CommodityGender;
+import zab.romik.request.CommodityDetails;
 import zab.romik.service.CategoriesService;
 import zab.romik.service.CommodityService;
 import zab.romik.service.CountryService;
@@ -134,9 +133,7 @@ public class CommodityController {
      */
     @GetMapping(Routes.Commodity.CREATE)
     public String createNewCommodity(final Model model) {
-        if (!model.containsAttribute(COMMODITY_MODEL_ATTRIBUTE)) {
-            model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, new Commodity());
-        }
+        model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, new CommodityDetails());
 
         return CREATE_COMMODITY_VIEW_NAME;
     }
@@ -150,7 +147,7 @@ public class CommodityController {
      */
     @GetMapping(Routes.Commodity.SHOW)
     public String view(final Model model, @PathVariable @Min(1) final long id) {
-        model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, findOrFail(id));
+        model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, commodityService.findRequiredById(id));
 
         return "admin/commodity/show";
     }
@@ -163,8 +160,11 @@ public class CommodityController {
      */
     @GetMapping(Routes.Commodity.DELETE)
     public String delete(@PathVariable long id, final RedirectAttributes redirectAttributes) {
-        commodityService.delete(findOrFail(id));
-        redirectAttributes.addFlashAttribute("commoditySuccessfulDeleted", "Товар успешно снят с продажи");
+        if (commodityService.delete(id)) {
+            redirectAttributes.addFlashAttribute("commoditySuccessfulDeleted", "Товар успешно снят с продажи");
+        } else {
+            redirectAttributes.addFlashAttribute("commodityWasNotDeleted", "Товар удалить не удалось, попробуйте позже");
+        }
 
         return Routes.redirectToWithId(Routes.Commodity.SHOW, id);
     }
@@ -178,23 +178,8 @@ public class CommodityController {
      */
     @GetMapping(Routes.Commodity.UPDATE)
     public String update(@PathVariable final long id, final Model model) {
-        model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, findOrFail(id));
+        model.addAttribute(COMMODITY_MODEL_ATTRIBUTE, commodityService.findRequiredById(id));
 
         return "admin/commodity/commodity_update";
-    }
-
-    /**
-     * Ищет товар по ID и если не находит, то бросает исключение о том, что
-     * ресурс не найден
-     *
-     * @param id ID товара который надо найти
-     * @return Найденный товар
-     */
-    private Commodity findOrFail(final long id) {
-        final Commodity commodity = commodityService.findOne(id);
-        if (commodity == null) {
-            throw new ResourceNotFoundException();
-        }
-        return commodity;
     }
 }

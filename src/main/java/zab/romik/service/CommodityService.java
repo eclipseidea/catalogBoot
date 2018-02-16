@@ -1,18 +1,21 @@
 package zab.romik.service;
 
 import zab.romik.entity.Commodity;
+import zab.romik.request.CommodityDetails;
+import zab.romik.request.CommodityFullDetails;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CommodityService {
 
-    Commodity save(final Commodity commodity);
+    CommodityDetails save(CommodityDetails commodity);
 
     List<Commodity> findAll();
 
-    Commodity findOne(long id);
+    Optional<CommodityFullDetails> findOne(long id);
 
-    void delete(final Commodity commodity);
+    CommodityFullDetails findRequiredById(long id);
 
-    void update(Commodity commodity);
+    boolean delete(long id);
 }

@@ -2,13 +2,9 @@ package zab.romik.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
 import zab.romik.enums.CommodityGender;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +20,7 @@ public class Commodity {
     /**
      * Название товара используемое для отображения
      */
-    @NotEmpty
-    @Length(min = 3, max = 255)
     private String name;
-
     private int age = 3;
 
     /**
@@ -40,14 +33,11 @@ public class Commodity {
     /**
      * Цена товара
      */
-    @NotNull
-    @Min(0)
     private BigDecimal price;
 
     /**
      * Количество товара
      */
-    @Min(1)
     private int quantity = 10;
 
     @Column(columnDefinition = "text")
@@ -61,15 +51,10 @@ public class Commodity {
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
     private List<ProductToProperty> productToProperties = new ArrayList<>();
 
-    @OneToMany(mappedBy = "commodity", cascade = CascadeType.REMOVE)
-    private List<Photo> photos = new ArrayList<>();
-
     @OneToOne
-    @NotNull
     private Categories categories;
 
     @OneToOne
-    @NotNull
     private Country country;
 
     /**
@@ -86,5 +71,9 @@ public class Commodity {
         super();
         this.name = name;
         this.price = price;
+    }
+
+    public void markDeleted() {
+        deleted = true;
     }
 }

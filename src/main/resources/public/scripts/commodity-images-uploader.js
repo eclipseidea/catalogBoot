@@ -2,13 +2,18 @@ $(document).ready(function () {
 
     'use strict';
 
+    /*
+     *
+     * Это плохо, нельзя делать тут глобальную коллекцию
+     * ради только файлов, позже переделать
+     */
+    window.files = [];
+
     let uploadButton = $('<div class="file-upload">');
 
-    let label = $('<label class= "label">').appendTo(uploadButton);
+    let button = $('<button class="btn_button">ADD FILES</button>').appendTo(uploadButton);
 
-    $(label).append($('<input type="file" multiple accept="image/!*"/>'))
-
-        .append($('<span class="span">ADD FILES</span>'));
+    $(button).append($('<input type="file" multiple accept="image/!*"/>'));
 
 
     $('#file-upload-button-container').append(uploadButton);
@@ -17,7 +22,7 @@ $(document).ready(function () {
 
         $.each(this.files, function (index, file) {
 
-            if (file.name !== null && file.type) {
+            if (file.name && file.type) {
 
                 uploadButton.addClass('hidden');
 
@@ -25,7 +30,7 @@ $(document).ready(function () {
 
                     if ($('#files').width() > 700) {
 
-                        return '40%'
+                        return '55%'
                     }
 
                     return '100%'
@@ -33,8 +38,8 @@ $(document).ready(function () {
 
                 let url = URL.createObjectURL(e.target.files[index]);
 
-                let div = $('<div/>')
-
+                let div = $('<div class="file_container">')
+                    .prepend('<br/>')
                     .css({'margin-bottom': '40px;', 'width': size})
 
                     .appendTo($('#files'));
@@ -43,56 +48,58 @@ $(document).ready(function () {
                 let img = $('<img/>').appendTo(div)
 
                     .attr('src', url)
-
                     .css({'width': '100%', 'height': 'auto', 'margin-bottom': '5px'})
-
                     .load = function () {
+
                     window.URL.revokeObjectURL(this.src);
-                }
+                };
 
+                let deleteButton = $('<button type="button" class="btn_btn" data-id="delete">DELETE</button>/')
 
-                let deleteButton = $('<button type="button" class="delete_file" data-id="delete">DELETE</button>/')
+                const radioButton = $('<div class="switch demo3">')
+                    .append('<input type="radio" name="is_index">')
+                    .append('<label><i></i></label></div>');
 
-                    .css({
-                        'position': 'relative',
-                        'width': '20%',
-                        'height': '40px',
-                        'background': '#FF0000',
-                        'border-radius': '30px',
-                        'padding': '8px 4px',
-                        'text-align': 'center',
-                    });
+                const ul = $('<ul class="file__control-panel">')
+                    .append($('<li class="li">').append(uploadButton))
+                    .append($('<li class ="li">').append(deleteButton))
+                    .append($('<li class="li">').append(radioButton))
+                    .append('</ul>');
 
+                ul.appendTo(div);
 
-                let radioButton = $('<div class=".switch">')
-                    .append($('<input type="checkbox" class="_input"/>'))
-                    .append('<label class="_label"><i class="i"></i></label>');
+                const fileModel = {
+                    file: file,
+                    isIndex: false
+                };
 
-
-                div.addClass('element').append(uploadButton, deleteButton, radioButton)
-                    .prepend('<br/>');
+                files.push(fileModel);
             }
 
             uploadButton.removeClass('hidden');
         });
 
 
-        let elementList = document.querySelectorAll('.delete_file');
+        const elementList = document.querySelectorAll('.btn_btn');
 
         $(elementList).click(function () {
 
-            if (($(this).parent()).is('.element:last')) {
+            const parent = $(this).parentsUntil("#files");
 
-                $(this).parent().prev().append(uploadButton);
+            if (($(parent).is('.file_container:last'))) {
 
+                const _div = $(parent).prev();
+
+                _div.find(".li:first").append(uploadButton);
             }
 
-            if (($(this).parent().is('.element:last')) && ($(this).parent().is('.element:first'))) {
+            if (($(parent).is('.file_container:last')) && ($(parent).is('.file_container:first'))) {
 
                 $('#file-upload-button-container').append(uploadButton);
             }
 
-            $(this).parent().remove();
+
+            $(parent).remove();
 
         });
 
@@ -102,7 +109,17 @@ $(document).ready(function () {
 });
 
 
+/*if(action=="rename"){
+ var tel = $("#"+ id+ "_tel").val();
 
+ }
+
+ const r = $('#delete-file').parent();
+
+ r.addClass("hidden");
+
+ alert("ok");
+ */
 
 
 

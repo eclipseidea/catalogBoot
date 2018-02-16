@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+@import "normalize.css";
+
+/* GLOBALS */
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin-right: 20px;
+
+}
+
+.btn_button {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.file-upload input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+/*
+.file-upload  {
+    position: relative; !* Даем возможность делать позиционирование, внутри данного элемента *!
+    overflow: hidden; !* Все что выходит за пределы - скрываем *!
+    width: 100px; !* Задаем ширину кнопки выбора файла *!
+    height: 40px; !* Задаем высоту кнопки выбора файла *!
+    background: #0000FF;
+    border-radius: 30px;
+    padding: 8px 4px;
+    text-align: center;
+    float: left;
+
+}
+.file-upload:hover {
+    background: #4169E1;
+
+}
+.file-upload input[type="file"]{
+    display: none; !* Обязательно скрываем настоящий Input File *!
+}
+.file-upload .label {
+    !* Растягиваем label на всю возможную площадь блока .file-upload *!
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.file-upload .span {
+    line-height: 36px; !* Делаем вертикальное выравнивание текста, который написан на кнопке *!
+    color: #FFFFFF ;
+
+}*/

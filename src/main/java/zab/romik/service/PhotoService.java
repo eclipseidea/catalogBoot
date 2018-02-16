@@ -1,21 +1,15 @@
 package zab.romik.service;
 
 import org.springframework.stereotype.Repository;
-import zab.romik.entity.Photo;
-
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 @Repository
 public interface PhotoService {
 
-    void save(Photo photo);
+    void attachFileToCommodity(long commodityId,
+                               boolean isIndex,
+                               String fileName);
 
-    List<Photo> findAll();
 
-    Photo findOne(long id);
-
-    void delete(long id);
-
-    void update (Photo photo);
-
+    String createNewFileName(MultipartFile file);
 }

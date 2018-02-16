@@ -3,7 +3,10 @@ package zab.romik.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Getter
 @Setter
@@ -16,22 +19,17 @@ public class Photo {
 
     private String fileName;
 
-    @ManyToOne
-    private Commodity commodity;
+    private long commodityId;
 
     private boolean isIndex;
 
-    public Photo() {
-
+    Photo() {
+        // for hibernate
     }
 
-    public Photo(final String fileName, final Commodity commodity, final boolean isIndex) {
+    public Photo(final String fileName, final long commodityId, final boolean isIndex) {
         this.fileName = fileName;
-        this.commodity = commodity;
+        this.commodityId = commodityId;
         this.isIndex = isIndex;
-    }
-
-    public Photo(String fileName) {
-        this.fileName = fileName;
     }
 }

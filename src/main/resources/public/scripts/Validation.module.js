@@ -1,14 +1,15 @@
 'use strict';
 
 /**
- * Этот JS класс занимается рендерингом ошибок к форме
+ * Этот класс является входной точкой в валидатор серверный, он имеет
+ * методы для проверки ответа на то что это ошибки валидации и прочие
+ * дополнительные нужные методы
  *
- * @param errors
- * @param form
+ * @param response Ответ от сервера
+ * @param form Форма в которой будут привязываться ошибки
  * @returns {{renderErrors: renderErrors}}
  */
-const errorsRenderer = function (errors, form) {
-
+window.App.Validator = function (response, form) {
     /**
      * Добавляет определенную ошибку к форме
      *
@@ -36,47 +37,17 @@ const errorsRenderer = function (errors, form) {
     return {
 
         /**
-         * Этот метод отображает на форму все ошибки которые пришли с сервера
+         * Рендерит ошибки используя для этого вспомогательный класс
+         * errors renderer
          */
-        renderErrors: function () {
-            errors.forEach(function (error) {
+        renderErrors() {
+            response.errors.forEach(function (error) {
                 const field = form.find("[name=" + error.field + "]");
+
                 if (!field) return;
 
                 addErrorToField(field, error);
             });
-        }
-    }
-};
-
-/**
- * Этот класс является входной точкой в валидатор серверный, он имеет
- * методы для проверки ответа на то что это ошибки валидации и прочие
- * дополнительные нужные методы
- *
- * @param response Ответ от сервера
- * @param form Форма в которой будут привязываться ошибки
- * @returns {{isValidationErrorsResponse: isValidationErrorsResponse, renderErrors: renderErrors}}
- */
-window.App.Validator = function (response, form) {
-    return {
-
-        /**
-         * Сообщает вызывающему методу что валидатор содержит внутри себя
-         * ответ с ошибками валидации от сервера
-         *
-         * @returns {boolean}
-         */
-        isValidationErrorsResponse: function () {
-            return response.hasOwnProperty("errors");
-        },
-
-        /**
-         * Рендерит ошибки используя для этого вспомогательный класс
-         * errors renderer
-         */
-        renderErrors: function () {
-            errorsRenderer(response.errors, form).renderErrors();
         }
     }
 };
