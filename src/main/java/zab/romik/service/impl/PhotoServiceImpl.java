@@ -1,46 +1,34 @@
 package zab.romik.service.impl;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+import zab.romik.adapter.FileAdapter;
 import zab.romik.dao.PhotoDao;
 import zab.romik.entity.Photo;
-import zab.romik.service.FileNamingStrategy;
 import zab.romik.service.PhotoService;
-import zab.romik.utils.FileUtils;
-
-import java.util.UUID;
+import zab.romik.service.UploadService;
 
 @Service
-public class PhotoServiceImpl implements PhotoService, FileNamingStrategy {
-
-    /**
-     * сервис для сохранения картинок
-     */
+public class PhotoServiceImpl implements PhotoService {
     private final PhotoDao photoDao;
+    private final UploadService uploadService;
 
     /**
      * дефолтный конструктор
      */
-    public PhotoServiceImpl(PhotoDao photoDao) {
+    public PhotoServiceImpl(PhotoDao photoDao, UploadService uploadService) {
         this.photoDao = photoDao;
+        this.uploadService = uploadService;
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void attachFileToCommodity(long commodityId,
-                                      boolean isIndex,
-                                      String fileName) {
-        Photo photo = new Photo(fileName, commodityId, isIndex);
+    public void attachFileToCommodity(long commodityId, boolean isIndex,
+                                      FileAdapter fileAdapter) {
 
-        photoDao.save(photo);
+        String fileName = uploadService.upload(fileAdapter);
+
+        photoDao.save(new Photo(fileName, commodityId, isIndex));
     }
-
-    @Override
-    public String createNewFileName(MultipartFile sourceFile) {
-        final String originalFileName = sourceFile.getOriginalFilename();
-        final String randomUUID = UUID.randomUUID().toString();
-        final String fileExtension = FileUtils.getFileExtension(originalFileName);
-
-        return String.format("%s.%s", randomUUID, fileExtension);
-    }
-
 }

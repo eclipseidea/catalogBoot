@@ -1,15 +1,8 @@
 package zab.romik.service;
 
-import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
+import zab.romik.adapter.FileAdapter;
 
-@Repository
 public interface PhotoService {
-
-    void attachFileToCommodity(long commodityId,
-                               boolean isIndex,
-                               String fileName);
-
-
-    String createNewFileName(MultipartFile file);
+    void attachFileToCommodity(long commodityId, boolean isIndex,
+                               FileAdapter multipartFile);
 }

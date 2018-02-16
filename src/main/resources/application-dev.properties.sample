@@ -2,4 +2,4 @@ spring.datasource.url=jdbc:mysql:catalog
 spring.datasource.username=catalog
 spring.datasource.password=XWuiYdlj
 spring.http.multipart.max-file-size
-screenshot.root.path
+shop.files.target.path=
