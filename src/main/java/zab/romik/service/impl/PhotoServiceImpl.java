@@ -31,4 +31,9 @@ public class PhotoServiceImpl implements PhotoService {
 
         photoDao.save(new Photo(fileName, commodityId, isIndex));
     }
+
+    public void searchFilesInFolder() {
+
+    }
+
 }

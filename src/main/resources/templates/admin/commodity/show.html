@@ -19,69 +19,70 @@
          class="alert alert-danger"></div>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="panel">
                 <div class="panel-heading">
                     <h4 class="panel-title">Основная информация</h4>
                 </div>
                 <div class="panel-body common-information">
                     <div class="row">
-                        <div class="col-md-4"><b>Название</b></div>
-                        <div class="col-md-8" th:text="${commodity.name}"></div>
-                    </div>
+                        <div class="col-md-5 ">
+                            <div class="row">
+                                <div class="col-md-6"><b>Название</b></div>
+                                <div class="col-md-6" th:text="${commodity.name}"></div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4"><b>Рекомендуемый пол</b></div>
-                        <div class="col-md-8" th:text="${commodity.gender.name}"></div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Рекомендуемый пол</b></div>
+                                <div class="col-md-6" th:text="${commodity.gender.name}"></div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4"><b>Рекомендуемый возраст</b></div>
-                        <div class="col-md-8" th:text="|${commodity.age}+|"></div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Рекомендуемый возраст</b></div>
+                                <div class="col-md-6" th:text="|${commodity.age}+|"></div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4"><b>Цена</b></div>
-                        <div class="col-md-8" th:text="${commodity.price}"></div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Цена</b></div>
+                                <div class="col-md-6" th:text="${commodity.price}"></div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4"><b>Количество (доступных)</b></div>
-                        <div class="col-md-8" th:text="|${commodity.quantity} позиций|"></div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Количество (доступных)</b></div>
+                                <div class="col-md-6" th:text="|${commodity.quantity} позиций|"></div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4"><b>Описание</b></div>
-                        <div class="col-md-8" th:text="${commodity.description}"></div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Описание</b></div>
+                                <div class="col-md-6 text-text" th:text="${commodity.description}"></div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4"><b>Категория</b></div>
-                        <div class="col-md-8" th:text="${commodity.categoryName}"></div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Категория</b></div>
+                                <div class="col-md-6" th:text="${commodity.categoryName}"></div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4"><b>Поставщик</b></div>
-                        <div class="col-md-8" th:text="${commodity.countryName}"></div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Поставщик</b></div>
+                                <div class="col-md-6" th:text="${commodity.countryName}"></div>
+                            </div>
 
-                    <!--<div class="row">
-                         <div class="col-md-4"><b>характеристика</b></div>
-                         <div class="col-md-8" th:text="${commodity.property?.title}"></div>
-                     </div>-->
-
-
-                    <div class="row">
-                        <div class="col-md-4"><b>Статус</b></div>
-                        <div class="col-md-8">
-                            <div th:replace="admin/commodity/fragments/status :: status (commodity=${commodity})"></div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Статус</b></div>
+                                <div class="col-md-6">
+                                    <div th:replace="admin/commodity/fragments/status :: status (commodity=${commodity})"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div th:replace="admin/commodity/fragments/photo_show :: photos"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked">
                 <li>
                     <a href="#" th:href="@{/commodity/{id}/update(id=${commodity.id})}">
@@ -99,4 +100,58 @@
         </div>
     </div>
 </div>
-<!--  end view commodity -->
+
+
+<!--<div class="row">
+    <div class="col-md-4"><b>Название</b></div>
+    <div class="col-md-4" th:text="${commodity.name}"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><b>Рекомендуемый пол</b></div>
+    <div class="col-md-4" th:text="${commodity.gender.name}"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><b>Рекомендуемый возраст</b></div>
+    <div class="col-md-4" th:text="|${commodity.age}+|"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><b>Цена</b></div>
+    <div class="col-md-4" th:text="${commodity.price}"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><b>Количество (доступных)</b></div>
+    <div class="col-md-4" th:text="|${commodity.quantity} позиций|"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><b>Описание</b></div>
+    <div class="col-md-4 text-text" th:text="${commodity.description}"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><b>Категория</b></div>
+    <div class="col-md-4" th:text="${commodity.categoryName}"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><b>Поставщик</b></div>
+    <div class="col-md-4" th:text="${commodity.countryName}"></div>
+</div>
+
+<!--<div class="row">
+     <div class="col-md-4"><b>характеристика</b></div>
+     <div class="col-md-8" th:text="${commodity.property?.title}"></div>
+ </div>-->
+
+
+<!--<div class="row">
+    <div class="col-md-4"><b>Статус</b></div>
+    <div class="col-md-4">
+        <div th:replace="admin/commodity/fragments/status :: status (commodity=${commodity})"></div>
+    </div>
+</div>
+  end view commodity -->

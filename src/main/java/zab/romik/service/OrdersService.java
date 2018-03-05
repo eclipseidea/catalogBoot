@@ -19,8 +19,6 @@ public interface OrdersService {
 
     void addUserToOrder(Orders order, User user);
 
-//    void addCommodityToOrder(Orders order,Commodity commodity);
-
     void removeUserFromOrder(Orders order);
 
 

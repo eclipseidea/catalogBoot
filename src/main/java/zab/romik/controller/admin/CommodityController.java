@@ -13,10 +13,7 @@ import zab.romik.entity.Country;
 import zab.romik.entity.Properties;
 import zab.romik.enums.CommodityGender;
 import zab.romik.request.CommodityDetails;
-import zab.romik.service.CategoriesService;
-import zab.romik.service.CommodityService;
-import zab.romik.service.CountryService;
-import zab.romik.service.PropertiesService;
+import zab.romik.service.*;
 
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -35,9 +32,14 @@ public class CommodityController {
     private static final String COMMODITY_MODEL_ATTRIBUTE = "commodity";
 
     /**
+     * Сервис для работы с files
+     */
+    private final PhotoService photoService;
+
+    /**
      * Сервис для работы с товарами
      */
-    private CommodityService commodityService;
+    private final CommodityService commodityService;
 
     /**
      * Сервис для работы с категориями
@@ -65,11 +67,13 @@ public class CommodityController {
     public CommodityController(final CommodityService commodityService,
                                final CategoriesService categoriesService,
                                final CountryService countryService,
-                               final PropertiesService propertiesService) {
+                               final PropertiesService propertiesService,
+                               final PhotoService photoService) {
         this.commodityService = commodityService;
         this.categoriesService = categoriesService;
         this.countryService = countryService;
         this.propertiesService = propertiesService;
+        this.photoService = photoService;
     }
 
     /**
@@ -110,6 +114,13 @@ public class CommodityController {
      */
     @ModelAttribute("properties")
     public List<Properties> properties(){return propertiesService.findAll();}
+
+    /**
+     * loading files in the template
+     * @return
+     */
+    /*@ModelAttribute("photos")
+    public List <String> photoLoad(){return commodityService.loadPhotos();}*/
 
     /**
      * Страница со списком товаров.

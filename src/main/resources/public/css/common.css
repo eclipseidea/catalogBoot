@@ -4,6 +4,10 @@
     margin-bottom: 7px;
 }
 
+.text-text {
+    word-wrap: break-word;
+}
+
 .form-group .error {
     border-color: #f93926;
 }
@@ -15,4 +19,5 @@
 .alert-block {
     margin-top: 1px;
 }
+
 

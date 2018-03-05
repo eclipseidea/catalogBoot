@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.Objects;
 
 public class MultipartFileAdapter implements FileAdapter {
+
     private final MultipartFile file;
 
     public MultipartFileAdapter(MultipartFile file) {
