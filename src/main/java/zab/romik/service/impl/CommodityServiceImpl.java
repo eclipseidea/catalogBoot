@@ -5,9 +5,12 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import zab.romik.core.ResourceNotFoundException;
 import zab.romik.dao.CommodityDao;
+import zab.romik.dao.PhotoDao;
 import zab.romik.entity.Commodity;
+import zab.romik.entity.Photo;
 import zab.romik.request.CommodityDetails;
 import zab.romik.request.CommodityFullDetails;
+import zab.romik.request.CommodityFullDetailsWithPhotos;
 import zab.romik.service.CommodityService;
 
 import java.util.List;
@@ -21,12 +24,23 @@ public class CommodityServiceImpl implements CommodityService {
      */
     private final CommodityDao commodityDao;
     private final ConversionService conversionService;
+    private final PhotoDao photoDao;
+
 
     @Autowired
     public CommodityServiceImpl(final CommodityDao commodityDao,
-                                final ConversionService conversionService) {
+                                final ConversionService conversionService, PhotoDao photoDao) {
         this.commodityDao = commodityDao;
         this.conversionService = conversionService;
+        this.photoDao = photoDao;
+    }
+
+    @Override
+    public CommodityFullDetailsWithPhotos showCommodity(long id) {
+        CommodityFullDetailsWithPhotos commodity = new CommodityFullDetailsWithPhotos();
+        commodity.setCommodityFullDetails(new CommodityFullDetails());
+        commodity.setFileNames(fileNames(id));
+        return commodity;
     }
 
     /**
@@ -62,6 +76,7 @@ public class CommodityServiceImpl implements CommodityService {
                 .map(this::convertToCommodityDetails);
     }
 
+
     private CommodityFullDetails convertToCommodityDetails(Commodity commodity) {
         return conversionService.convert(commodity, CommodityFullDetails.class);
     }
@@ -83,4 +98,14 @@ public class CommodityServiceImpl implements CommodityService {
 
         return true;
     }
+
+    private List<String> fileNames(long id) {
+        List<Photo> photos = photoDao.findAllByCommodityIdEquals(id);
+        List<String> fileNames = null;
+        for (Photo ph : photos) {
+            fileNames.add(ph.getFileName());
+        }
+        return fileNames;
+    }
+    
 }
